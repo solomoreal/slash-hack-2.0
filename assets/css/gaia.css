@@ -1508,6 +1508,12 @@ a,
     background-color: rgba(255, 255, 255, 0.2);
   }
 }
+
+.solution{
+  color: white;
+  font-weight: bold;
+}
+
 .footer {
   background-color: #FFFFFF;
   line-height: 20px;
@@ -1567,13 +1573,14 @@ a,
   color: #777777;
 }
 .footer .title {
-  text-align: left;
+  text-align: center;
   margin-bottom: 10px;
   font-size: 15px;
   font-weight: bold;
 }
 .footer .btn-social {
   color: #9A9A9A;
+
 }
 
 .footer:not(.footer-big) nav > ul {
@@ -1956,6 +1963,12 @@ a,
 }
 .card .description {
   font-size: 13px;
+
+}
+
+.description{
+  color: white;
+  font-weight: bold;
 }
 
 .card-member {
