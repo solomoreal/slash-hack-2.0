@@ -496,6 +496,13 @@ a,
   margin-top: 5px;
   margin-bottom: 0px;
 }
+.navbar-brand {
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 50px;
+  line-height: 20px;
+}
 
 .btn,
 .navbar .navbar-nav > li > a.btn {
@@ -1026,6 +1033,7 @@ a,
   display: inline-block;
 }
 
+
 .section-contact-form {
   padding-top: 110px;
 }
@@ -1286,7 +1294,7 @@ a,
 
 .navbar {
   border: 0;
-  font-size: 16px;
+  font-size: 50px;
 }
 .navbar .navbar-brand {
   margin: 10px 0px;
@@ -1519,6 +1527,12 @@ a,
 }
 .footer nav > ul a:not(.btn):hover, .footer nav > ul a:not(.btn):focus {
   color: #777777;
+}
+#sitename{
+  font-size: 45px;
+}
+#menu{
+  font-size: 20px;
 }
 .footer .social-area {
   padding: 15px 0;
@@ -1773,6 +1787,7 @@ a,
 .navbar-nav > li > .dropdown-menu {
   border-radius: 4px;
   margin-top: -5px;
+
 }
 .navbar-nav > li > .dropdown-menu:before {
   border-bottom: 11px solid rgba(0, 0, 0, 0.2);
@@ -3584,6 +3599,8 @@ body {
   .dropdown-menu {
     display: none;
   }
+
+  
 
   .navbar-fixed-top {
     -webkit-backface-visibility: hidden;
