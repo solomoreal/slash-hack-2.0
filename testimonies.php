@@ -1,5 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+/** 
+ $msg = '';
+  if (isset($_GET['id']) {
+    $testimony = Testimony::find($_GET['id']);
+    
+  }
+  
+    $testimony = Testimony::all();
+
+  */
+ ?>
 
 <head>
     <meta charset="utf-8" />
@@ -7,7 +19,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>assault</title>
+    <title>Testimonies</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
@@ -38,13 +50,25 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right navbar-uppercase">
                     <li>
-                        <a href="aboutus.html" id="menu" >About Us</a>
+                        <a href="#" target="_blank" id="menu" >About Us</a>
                     </li>
                     
-                    <li>
-                        <a href="report.html" id="menu" >Make A Report</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="menu" data-toggle="dropdown">
+                            Sexual Assualt
+                        </a>
+                        <ul class="dropdown-menu dropdown-danger">
+                            <li>
+                                <a href="#">Work Place Assualt</a>
+                            </li>
+                            <li>
+                                <a href="#">Domestic Assualt</a>
+                            </li>
+                            <li>
+                                <a href="#">Campus Assualt</a>
+                            </li>
+                        </ul>
                     </li>
-
                    <li>
                         <a href="#" id="menu">Get Involved</a>
                     </li>
@@ -63,10 +87,9 @@
             <div class="container">
                 <div class="content">
                     <div class="title-area">
-                        <h1 class="title-modern">What We Do</h1>
+                        <h1 class="title-modern">TESTIMONIES</h1>
                         <div class="separator line-separator">♦</div>
-                        <h3>We are a non-profit organization, that uses Tecnology to combat Sexual Assualt, Domestic Violence and Other related Offenses.
-                        We also Believe in creating a community to help provide and support Victims of these Offenses.</h2>
+                        <h3>We believe in the work we are doing here, lives are being transformed every day, here are some testimonies</h3>
                         <div class="separator line-separator">♦</div>
                     </div>
                 </div>
@@ -79,35 +102,43 @@
     <div class="section">
         <div class="container">
             <div class="row"   >
-                <div class="title-area">
-                    <h2>Our Aim</h2>
-                    <div class="separator separator-danger">✻</div>
-                    <p class="description">As we have seen from recent trends, Sexual Harassment and assault are far too common and often not reported, and it's hard for victims to know whether or not they're the only one. Knowing that you are not alone in this suitation changes a lot - the way you frame your experience, your motivation to take action, the chance that taking action will lead to protection of yourself and your community.
-
-                    <br>Our aim is to bring together a global community of those who are passionate about combating these ills to start a revolution against Sexual Harassment and assualt.[SiteName] helps by giving victims the options, information and support they need by allowing them to disclose in their own time and in their own way. We also partner with concerned Individuals and Organisations who want to lend a helping hand to these victims.
-                    We believe that by empowering victims of sexual harassment and assualt, we can support their wellbeing and change the culture of sexual violence that has persisted for far too long.</p>
-                </div>
-        </div>
-    </div>
-
-    <div class="section section-our-team-freebie">
+                    <div class="section section-our-team-freebie">
         <div class="parallax filter filter-color-black">
             <div class="image" style="background-image:url('assets/img/header-2.jpeg')">
             </div>
-
             <div class="container">
                 <div class="content">
-                    <div class="row">
-                        <div class="title-area">
-                        <h2 style="color: pink;">Our Solution Approach</h2>
-                        <div class="separator separator-danger">✻</div>
-                        <p class="description">Our approach is pretty straight forword, we give the survivors and those willing to offer support three key avenue to do so there are <br> sharing of TESTIMONIES of how survivors overcame assualts and harrasment<br>
-                            Giving Survivor the oppurtunity to share thier stories with everyone so others will know they are not alone
-                            <br>
-                            Send messages directly to our Support partners for therapy and legal advice.
+                   <?php echo "we ll fetch the images and testimonies from the database and and dynamically generate the divs"  ?> 
+                    <div class="team">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1">
+                                        <div class="card card-member">
+                                            <div class="content">
+                                                <div class="avatar avatar-danger">
+                                                    <img alt="..." class="img-circle" src="assets/img/faces/face_1.jpg"/>
+                                                </div>
+                              
+                                                <div class="description">
+                                                    <h3 class="title">Tina</h3>
+                                                    <p class="small-text">CEO / Co-Founder</p>
+                                                    <p class="description">I miss the old Kanye I gotta say at that time I’d like to meet Kanye And I promise the power is in the people and I will use the power given by the people to bring everything I have back to the people.</p>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
                 </div>
             </div>
         </div>
