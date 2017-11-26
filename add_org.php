@@ -1,3 +1,26 @@
+<?php 
+      include_once "include/Organisation.php";
+      include_once "include/Individual.php";
+      include_once ('include/session.php');
+      include_once ('include/function.php'); 
+      // if(!$session->is_logged_in()) redirect('logout.php');
+      $msg = '';
+      if(isset($_POST['submit'])){
+        $ind = Organisation::instantiate($_POST);
+       
+        if($ind){
+          if($ind->insertOrg()){
+            $msg = 'Organisation Created Successfully.';
+          }else{
+            $msg = 'Failed to create new Organisation .';
+          }
+        }else{
+          $msg = 'Failed to create Organisation .';
+        }
+      }
+       
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +69,7 @@
                     </li>
 
                    <li>
-                        <a href="get-involved.html" id="menu">Get Involved</a>
+                        <a href="#" id="menu">Get Involved</a>
                     </li>
                 </ul>
             </div>
@@ -63,9 +86,9 @@
             <div class="container">
                 <div class="content">
                     <div class="title-area">
-                        <h1 class="title-modern">REPORT </h1>
+                        <h1 class="title-modern">Get invloved as an organisation</h1>
                         <div class="separator line-separator">♦</div>
-                        <h3>If you think you don't want to share your report for others to see and read, you can reach directly to por partners.</h2>
+                        <h3>Your support will be appreciated as it will go a long way to reduce the occurence of physsical and emotional abuse </h3>
                         <div class="separator line-separator">♦</div>
                     </div>
                 </div>
@@ -78,9 +101,12 @@
     <div class="section">
         <div class="container">
             <div class="row"   >
-                <div class="separator line-separator">♦</div>
-                        <h3>share your stories of experience to you or anyone you know was affected by this evil act.</h2>
-                <div class="separator line-separator">♦</div
+                <div class="title-area">
+                    <h2>Why should you get involved?</h2>
+                    <div class="separator separator-danger">✻</div>
+                    <p class="description">The information that will be collected here is used to help enhance understanding of our society climate so that we may strengthen sexual violence response and prevention efforts.
+                    Survivors can also use this form to request support. Survivors who may not initially be inclined to report a sexual assault to the police or to other Law Enforcement have the right to change their mind at any time. Information the Individual provides on this reporting form can be used at any time should the survivor so choose.</p>
+                </div>
         </div>
     </div>
 
@@ -91,79 +117,48 @@
             </div>
             <div class="container">
                 <div class="title-area">
-                    <h2 class="text-white">REPORT Form</h2>
+                    <h2 class="text-white">Report Form</h2>
                 </div>
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Please leave this section blank if you do not wish to be contacted</h3>
                     <div class="separator line-separator">♦</div>
-                    <form>
-                      <div class="form-group">
-                        <h4>Phone Number:</h4>
-                        <input type="phone" class="form-control" name="phone">
-                      </div>
-                      <div class="form-group">
-                        <h4>Email:</h4>
-                        <input type="email" class="form-control" name="email">
-                      </div>
-                    </form>
-                </div>
+                    <form action="add_org.php" method="post">
 
-                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <h3>Reporter Information</h3>
-                    <div class="separator line-separator">♦</div>
-                    <form>
-                      <div class="form-group">
-                        <h4>First Name:</h4>
-                        <input type="text" class="form-control" name="first_name">
-                      </div>
-                      <div class="form-group">
-                        <h4>Last Name(Optional):</h4>
-                        <input type="text" class="form-control" name="last_name">
-                      </div>
-                    </form>
-                </div>
-                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <h3>Survivor's Information</h3>
-                    <div class="separator line-separator">♦</div>
-                    <form>
-                      <div class="form-group">
-                        <h4>First Name:</h4>
-                        <input type="text" class="form-control" name="first_name">
-                      </div>
-                      <div class="form-group">
-                        <h4>Last Name(Optional):</h4>
-                        <input type="text" class="form-control" name="last_name">
-                      </div>
-                      <div class="form-group">
-                        <h4>Survivor's Gender:<h4><br>
-                        <label class="radio-inline"><input type="radio" name="sex">Male</label>
-                        <label class="radio-inline"><input type="radio" name="sex">Female</label>
-                      </div>
-                    </form>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-         
-              
-                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <h3>make report:</h3>
-                    <div class="separator line-separator">♦</div>
-                    <form>
-                      <div class="form-group">
-                        <h4>make sure the story guine. </h4>
-                        <textarea class="form-control">
-                        story in details
-                            
-                        </textarea>
-                      </div>
-                    </form>
+                        <div class="form-group">
+                            <h4>Name of organisation</h4>
+                            <input type="text" class="form-control" name="org_name">
+                        </div>
 
-                    <div class="button-get-started">
-                        <a href="#" class="btn btn-danger btn-fill btn-lg">REPORT</a>
-                    </div>
-                 </div>
+                        <div class="form-group">
+                            <h4>Email</h4>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Headquarters</h4>
+                            <input type="text" class="form-control" name="headquarters">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Password</h4>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <!-- make reason drop down -->
+                         <div class="form-group">
+                            <h4>Reason for interest</h4>
+                            <input type="text" class="form-control" name="reason">
+                        </div>
+
+                       
+
+                        <div class='col'>
+                            <button type='submit' name='submit' class ='btn button-get-started'>Submit Form</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-     </div>   
+        </div>
 
     <footer class="footer footer-big footer-color-black" data-color="black">
         <div class="container">
@@ -179,7 +174,7 @@
                                     <a href="#">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="#">Work place Assualt</a>
+                                    <a href="#">Work placr Assualt</a>
                                 </li>
                                 <li>
                                     <a href="#">Domestic Assualt</a>
