@@ -1,3 +1,31 @@
+<?php
+    
+    include_once "include/testimony.php";
+      $msg = '';
+      if(isset($_POST['SubmitTestimony'])){
+        $testi = Testimony::instantiate($_POST);
+       
+        if($testi){
+          if($testi->insertTestimony()){
+            $msg = "<div class='alert alert-success alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Testimony sent Successfully</strong></h4>
+                <p class='text-center'>You are almost there, go to your inbox and confirm the link sent to You.</p>
+                </div>";
+          }else{
+            $msg = "<div class='alert alert-danger alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Oops...Something went Wrong!</strong></h4>
+                <p class='text-center'> Check your inputs and try again.</p>
+                </div>";
+          }
+        }else{
+          $msg = '';
+        }
+      }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,6 +115,10 @@
         </div>
     </div>
 
+    <?php 
+        echo "$msg";
+    ?>
+
     <div class="section section-our-team-freebie">
         <div class="parallax filter">
             <div class="image"
@@ -114,7 +146,7 @@
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Testimony teller Information</h3>
                     <div class="separator line-separator">♦</div>
-                    <form>
+                    <form action="share_testimony.php" method="post">
                       <div class="form-group">
                         <h4>First Name:</h4>
                         <input type="text" class="form-control" name="first_name">
@@ -123,23 +155,21 @@
                         <h4>Last Name(Optional):</h4>
                         <input type="text" class="form-control" name="last_name">
                       </div>
-                    </form>
                 </div>              
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>write the Testimonial story:</h3>
                     <div class="separator line-separator">♦</div>
-                    <form>
                       <div class="form-group">
                         <h4>Don't leave any stone unturned.</h4>
-                        <textarea class="form-control" rows="7" maxlength="100">                        
+                        <textarea class="form-control" rows="7" maxlength="100" name="testimony">                        
                         </textarea>
                       </div>
-                    </form>
 
                     <div class="button-get-started">
-                        <a href="#" class="btn btn-danger btn-fill btn-lg">Share Testimony</a>
+                        <a href="#" class="btn btn-danger btn-fill btn-lg" name="SubmitTestimony">Share Testimony</a>
                     </div>
                  </div>
+                </form>
             </div>
         </div>
      </div>   
