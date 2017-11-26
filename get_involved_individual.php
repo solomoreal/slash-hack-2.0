@@ -1,17 +1,28 @@
+<?php 
+      include_once "include/Organisation.php";
+      include_once "include/Individual.php";
+      include_once ('include/session.php');
+      include_once ('include/function.php'); 
+      // if(!$session->is_logged_in()) redirect('logout.php');
+      $msg = '';
+      if(isset($_POST['submit'])){
+        $ind = Individual::instantiate($_POST);
+       
+        if($ind){
+          if($ind->insertIndiv()){
+            $msg = 'Organisation Created Successfully.';
+          }else{
+            $msg = 'Failed to create new Organisation .';
+          }
+        }else{
+          $msg = 'Failed to create Organisation .';
+        }
+      }
+       
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<?php
-/** 
- $msg = '';
-  if (isset($_GET['id']) {
-    $testimony = Testimony::find($_GET['id']);
-    
-  }
-  
-    $testimony = Testimony::all();
-
-  */
- ?>
 
 <head>
     <meta charset="utf-8" />
@@ -19,7 +30,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Testimonies</title>
+    <title>assault</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
@@ -50,25 +61,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right navbar-uppercase">
                     <li>
-                        <a href="#" target="_blank" id="menu" >About Us</a>
+                        <a href="aboutus.html" id="menu" >About Us</a>
                     </li>
                     
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" id="menu" data-toggle="dropdown">
-                            Sexual Assualt
-                        </a>
-                        <ul class="dropdown-menu dropdown-danger">
-                            <li>
-                                <a href="#">Work Place Assualt</a>
-                            </li>
-                            <li>
-                                <a href="#">Domestic Assualt</a>
-                            </li>
-                            <li>
-                                <a href="#">Campus Assualt</a>
-                            </li>
-                        </ul>
+                    <li>
+                        <a href="report.html" id="menu" >Make A Report</a>
                     </li>
+
                    <li>
                         <a href="#" id="menu">Get Involved</a>
                     </li>
@@ -82,14 +81,14 @@
     <div class="section section-header">
         <div class="parallax filter filter-color-black">
             <div class="image"
-                style="background-image: url('assets/img/aboutus.jpg')">
+                style="background-image: url('assets/img/report.jpg')">
             </div>
             <div class="container">
                 <div class="content">
                     <div class="title-area">
-                        <h1 class="title-modern">STORIES</h1>
+                        <h1 class="title-modern">Get involved as an individual</h1>
                         <div class="separator line-separator">♦</div>
-                        <h3>You are not alone and you are going to come out of this strong. Here are some stories of others that have been through assualts and harrassment and did not let it keep them down</h3>
+                        <h3> Nothing you do is too little to save a life. Register here  </h3>
                         <div class="separator line-separator">♦</div>
                     </div>
                 </div>
@@ -102,45 +101,61 @@
     <div class="section">
         <div class="container">
             <div class="row"   >
-                    <div class="section section-our-team-freebie">
-        <div class="parallax filter filter-color-black">
-            <div class="image" style="background-image:url('assets/img/header-2.jpeg')">
-            </div>
-            <div class="container">
-                <div class="content">
-                   <?php echo "we ll fetch the images and testimonies from the database and and dynamically generate the dives"  ?> 
-                    <div class="team">
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <div class="card card-member">
-                                            <div class="content">
-                                                <div class="avatar avatar-danger">
-                                                    <img alt="..." class="img-circle" src="assets/img/faces/face_1.jpg"/>
-                                                </div>
-                              
-                                                <div class="description">
-                                                    <h3 class="title">Tina</h3>
-                                                    <p class="small-text">CEO / Co-Founder</p>
-                                                    <p class="description">I miss the old Kanye I gotta say at that time I’d like to meet Kanye And I promise the power is in the people and I will use the power given by the people to bring everything I have back to the people.</p>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="title-area">
+                    <h2>Why Should you get involved</h2>
+                    <div class="separator separator-danger">✻</div>
+                    <p class="description">The information that will be collected here is used to help enhance understanding of our society climate so that we may strengthen sexual violence response and prevention efforts.
+                    Survivors can also use this form to request support. Survivors who may not initially be inclined to report a sexual assault to the police or to other Law Enforcement have the right to change their mind at any time. Information the Individual provides on this reporting form can be used at any time should the survivor so choose.</p>
                 </div>
-            </div>
         </div>
     </div>
 
+    <div class="section section-our-team-freebie">
+        <div class="parallax filter">
+            <div class="image"
+                style="background-image: url('assets/img/grassland.jpg')">
+            </div>
+            <div class="container">
+                <div class="title-area">
+                    <h2 class="text-white">Please fill this Form</h2>
+                </div>
+                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
+                    <!-- <h3>Please leave this section blank if you do not wish to be contacted</h3> -->
+                    <div class="separator line-separator">♦</div>
+                    <form action="get_involved_individual.php" method="post">
+
+                        <div class="form-group">
+                            <h4>First name</h4>
+                            <input type="text" class="form-control" name="firstname">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Last name</h4>
+                            <input type="text" class="form-control" name="firstname">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Email:</h4>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Password</h4>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Confirm password</h4>
+                            <input type="password" class="form-control" name="confirm">
+                        </div>
+
+                        <div class='col'>
+                            <button type='submit' name='submit' class ='btn button-get-started'>Submit Form</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
         </div>
 
     <footer class="footer footer-big footer-color-black" data-color="black">

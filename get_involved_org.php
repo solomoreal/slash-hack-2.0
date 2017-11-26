@@ -122,7 +122,7 @@
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Please leave this section blank if you do not wish to be contacted</h3>
                     <div class="separator line-separator">♦</div>
-                    <form action="add_org.php" method="post">
+                    <form action="get_involved_org.php" method="post">
 
                         <div class="form-group">
                             <h4>Name of organisation</h4>
