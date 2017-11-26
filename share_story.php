@@ -1,6 +1,6 @@
 <?php
 
-include_once 'PHP_FOLDER/story.php';
+include_once 'include/story.php';
     $result = '';
     if (isset($_POST['click'])){
         $story = Story::instantiate($_POST);
@@ -129,11 +129,11 @@ include_once 'PHP_FOLDER/story.php';
                     <form action="share_story.php" method="post">
                           <div class="form-group">
                             <h4>Phone Number:</h4>
-                            <input type="phone" class="form-control" name="phone">
+                            <input type="phone" class="form-control" name="phone" required="">
                           </div>
                           <div class="form-group">
                             <h4>Email:</h4>
-                            <input type="email" class="form-control" name="email">
+                            <input type="email" class="form-control" name="email" required="">
                           </div>
                         
                     </div>
@@ -144,7 +144,7 @@ include_once 'PHP_FOLDER/story.php';
                         
                           <div class="form-group">
                             <h4>First Name:</h4>
-                            <input type="text" class="form-control" name="first_name">
+                            <input type="text" class="form-control" name="first_name" required="">
                           </div>
                           <div class="form-group">
                             <h4>Last Name(Optional):</h4>
@@ -160,7 +160,7 @@ include_once 'PHP_FOLDER/story.php';
                         <div class="separator line-separator">♦</div>
                             <div class="form-group">
                             <h4>make sure the story guine. </h4>
-                            <textarea class="form-control" rows="10" name="story">
+                            <textarea class="form-control" rows="10" name="story" maxlength="100" required="">
                             
                                 
                             </textarea>

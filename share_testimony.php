@@ -134,11 +134,11 @@
                     <form action="share_testimony.php" method="post">
                       <div class="form-group">
                             <h4>Phone Number:</h4>
-                            <input type="phone" class="form-control" name="phone">
+                            <input type="phone" class="form-control" name="phone" required="">
                         </div>
                       <div class="form-group">
                         <h4>Email:</h4>
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" name="email" required="">
                        
                       </div>
                 </div>
@@ -148,7 +148,7 @@
                     <div class="separator line-separator">♦</div>
                       <div class="form-group">
                         <h4>First Name:</h4>
-                        <input type="text" class="form-control" name="first_name">
+                        <input type="text" class="form-control" name="first_name" required="">
                       </div>
                       <div class="form-group">
                         <h4>Last Name(Optional):</h4>
@@ -161,7 +161,7 @@
 
                       <div class="form-group">
                         <h4>Don't leave any stone unturned.</h4>
-                        <textarea class="form-control" rows="7" maxlength="100" name="testimony">                        
+                        <textarea class="form-control" rows="7" maxlength="100" name="testimony" required="">                        
                        </textarea>
                         </div>
                     
