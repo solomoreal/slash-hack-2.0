@@ -5,16 +5,16 @@
         protected $individual_id;
 		public $first_name;
 		public $last_name;
-		public $middle_name;
-		public $sex;
-		public $dob;
-		public $phone;
+		// public $middle_name;
+		// public $sex;
+		// public $dob;
+		// public $phone;
 		public $email;
 		public $location;
 		public $interest;
-		public $status;
+		// public $status;
 		public $password;
-		public $date;
+		// public $date;
 		
 
 		public $passport;
@@ -23,7 +23,7 @@
 		public static $class_name = 'Individual';
 		public static $table_name = 'individual';
 		public static $primary_key = 'individual_id';
-		public static $table_fields = array('passport','individual_id','first_name','middle_name','last_name','sex','dob','phone','email','interest','location','status','password','date');
+		public static $table_fields = array('individual_id','first_name','last_name','email','location','interest','password');
 		function __construct() 
 		{
 			parent::__construct();

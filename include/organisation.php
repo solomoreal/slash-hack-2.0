@@ -2,19 +2,19 @@
 	include_once('model.php');
 	class Organisation extends Model{
 
-        protected $individual_id;
+        protected $organisation_id;
 		public $name;
-		public $last_name;
-		public $middle_name;
-		public $sex;
+		// public $last_name;
+		// public $middle_name;
+		// public $sex;
 		public $website;
-		public $phone;
+		// public $phone;
 		public $email;
 		public $location;
 		public $interest;
-		public $status;
+		// public $status;
 		public $password;
-		public $date;
+		// public $date;
 		
 
 		public $passport;
@@ -23,7 +23,7 @@
 		public static $class_name = 'Organisation';
 		public static $table_name = 'organisation';
 		public static $primary_key = 'organisation_id';
-		public static $table_fields = array('passport','individual_id','name','middle_name','last_name','sex','website','phone','email','interest','location','status','password','date');
+		public static $table_fields = array('organisation_id','name','website','email','location','interest','password');
 		function __construct() 
 		{
 			parent::__construct();
