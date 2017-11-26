@@ -1,5 +1,5 @@
 <?php
-	defined('DNS') ? null : define ('DNS', 'mysql:host=localhost;dbname=assualt_app;charset=utf8');
+	defined('DNS') ? null : define ('DNS', 'mysql:host=localhost;dbname=slash_hack;charset=utf8');
 	
 	defined('DB_USER') ? null : define ('DB_USER','root');
 

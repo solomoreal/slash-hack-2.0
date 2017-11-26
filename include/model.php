@@ -75,7 +75,7 @@ class Model extends MyPDO{
 		$sql = "INSERT INTO ".static::$table_name;
 		$sql .= " (" .join(',',$obj_attributes_array_keys).")";
 		$sql .= "VALUES ('" .join("','",$obj_attributes_array)."')";
-		//echo $sql;
+		echo $sql;
 		return ($this->connection->query($sql)) ? true : false;
 	}
 	
