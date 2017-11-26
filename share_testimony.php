@@ -1,67 +1,29 @@
 <?php
-    include_once 'PHP_FOLDER/testimony.php';
+    include_once 'include/testimony.php';
     $result = '';
-
-
-            $nameErr = $emailErr = $phoneErr = $testimonyErr = "";
-        $first_name = $email = $phone = $testimony = "";
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-          if (empty($_POST["first_name"])) {
-            $nameErr = "First Name is required";
-          } else {
-            $first_name = test_input($_POST["first_name"]);
-          }
-
-          if (empty($_POST["email"])) {
-            $emailErr = "Email is required";
-          } else {
-            $email = test_input($_POST["email"]);
-          }
-
-          if (empty($_POST["testimony"])) {
-            $testimony = " Testimony is required";
-          } else {
-            $testimony = test_input($_POST["testimony"]);
-          }
-
-          if (empty($_POST["phone"])) {
-            $phone = "phone is required";
-          } else {
-            $phone = test_input($_POST["comment"]);
-          }
-        }
-
-
-
-
     if (isset($_POST['click'])){
     
         $testimony = Testimony::instantiate($_POST);
          $header = ' Share Testimony';
           $message ='Your Testimony was successsfully Shared.';
           $message2 = 'your Testimony was not shared, Try again!';
-          $message2
           if($testimony){
                 if ($testimony->TellTestimony()){
                    $result = '<div class="alert alert-success alert-dismissible" role="alert">
                           <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                          <strong>Success!</strong>'." $header ".'<hr/>'." $message ".'</div>';
+                          <strong>Success!</strong>'." $header ".'<hr/>'." $message ".'</div>'.'<br>'.'<p class="text-center">You are almost there, go to your inbox and confirm the link sent to You.</p>';
                 }else {
                   $result = '<div class="alert alert-danger alert-dismissible" role="alert">
                   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                   <strong> OOops! </strong>' ." $header ". '<hr/>'." $message2 ".'</div>';
                 }
-            }else {
-                  $result = '<div class="alert alert-danger alert-dismissible" role="alert">
-                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <strong> OOops! </strong>' ." $header ". '<hr/>'." $message2 ".'</div>';
-                }    
+            
     }
+   } 
 ?>
 
-
-
+    
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,9 +95,7 @@
                         <h3>Testimony is a story been told to people about the success gained after undergoing a therapy or medical care gotten from our partners.</h2>
                         <div class="separator line-separator">♦</div>
                     </div>
-                    <div>
-                    <?php echo $result;?>
-                    </div>
+                   
                 </div>
 
             </div>
@@ -155,6 +115,10 @@
         </div>
     </div>
 
+    <?php 
+        echo "$result";
+    ?>
+
     <div class="section section-our-team-freebie">
         <div class="parallax filter">
             <div class="image"
@@ -167,44 +131,39 @@
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Please leave this section blank if you do not wish to be contacted</h3>
                     <div class="separator line-separator">♦</div>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <form action="share_testimony.php" method="post">
                       <div class="form-group">
-                        <h4>Phone Number:</h4>
-                        <input type="phone" class="form-control" name="phone">
-                        <span class="error">* <?php echo $phoneErr;?></span>
-                      </div>
+                            <h4>Phone Number:</h4>
+                            <input type="phone" class="form-control" name="phone">
+                        </div>
                       <div class="form-group">
                         <h4>Email:</h4>
                         <input type="email" class="form-control" name="email">
-                        <span class="error">* <?php echo $emailErr;?></span>
+                       
                       </div>
                 </div>
 
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Testimony teller Information</h3>
                     <div class="separator line-separator">♦</div>
-                    
                       <div class="form-group">
                         <h4>First Name:</h4>
                         <input type="text" class="form-control" name="first_name">
-                        <span class="error">* <?php echo $nameErr;?></span>
                       </div>
                       <div class="form-group">
                         <h4>Last Name(Optional):</h4>
                         <input type="text" class="form-control" name="last_name">
-                      </div>
-                    
+                      </div>            
                 </div>              
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>write the Testimonial story:</h3>
                     <div class="separator line-separator">♦</div>
-                
+
                       <div class="form-group">
-                        <h4>Don't leave any stone unturned, give a guine Testimony. </h4>
-                        <textarea class="form-control" rows="10" name="testimony">
-                        </textarea>
-                        <span class="error">* <?php echo $testimonyErr;?></span>
-                      </div>
+                        <h4>Don't leave any stone unturned.</h4>
+                        <textarea class="form-control" rows="7" maxlength="100" name="testimony">                        
+                       </textarea>
+                        </div>
                     
 
                     <div class="button-get-started">
@@ -212,8 +171,8 @@
                     </div>
                   </form>  
                 </div>
-            </div>
-        </div>
+
+          </div>
      </div>   
 
     <footer class="footer footer-big footer-color-black" data-color="black">
