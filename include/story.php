@@ -12,13 +12,13 @@ class Story extends Model
 	public $email;
 	public $phone;
 	public $story;
-	public $error = array ();
+	public $date;
 
 
 	public static $class_name = 'Story';
 	public static $table_name  = 'share_story';
 	public static $primary_key = 'story_id'; 
-	public static $table_fields = array ('first_name','last_name','email','phone','story_id','story');
+	public static $table_fields = array ('story_id','first_name','last_name','email','phone','story','date');
 
 
 
@@ -36,21 +36,21 @@ class Story extends Model
 		return $this->story_id;
 	}
 
-	public function setStoryid(){
+	// public function setStoryid(){
 
-		if($laststory = static::last()){
-			$lastId = explode ('/',$laststory->story_id);
-			$lastId[1]++;
-			$this->story_id = 'story/00'.$lastId[1];
-		}else{
-			$this->story_id = 'story/0001'; 
-		}
+	// 	if($laststory = static::last()){
+	// 		$lastId = explode ('/',$laststory->story_id);
+	// 		$lastId[1]++;
+	// 		$this->story_id = 'story/00'.$lastId[1];
+	// 	}else{
+	// 		$this->story_id = 'story/0001'; 
+	// 	}
 
-	}
+	// }
 
 		public function TellStory(){
 
-	 		$this->setStoryid();	 		
+	 		// $this->setStoryid();	 		
 	 		return ($this->create())? true : false;
 	 	}
 

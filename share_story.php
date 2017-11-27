@@ -4,18 +4,21 @@ include_once 'include/story.php';
     $result = '';
     if (isset($_POST['click'])){
         $story = Story::instantiate($_POST);
-             $header = ' Share Story';
-          $message ='Your Story was successsfully Shared.';
-          $message2 = 'your story was not shared, Try again!';
+        // var_dump($story);
+
           if($story)
             if ($story->TellStory()){
-               $result = '<div class="alert alert-success alert-dismissible" role="alert">
-                      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                      <strong>Success!</strong>'." $header ".'<hr/>'." $message ".'</div>';
+                $result = "<div class='alert alert-success alert-dismissable'>
+                                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                                <h4 class='text-center'><strong>Story Submitted Successfully</strong></h4>
+                                <p class='text-center'>Thank you for Sharing your Story with Us.</p>
+                                </div>";
             }else {
-              $result = '<div class="alert alert-danger alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <strong> OOops! </strong>' ." $header ". '<hr/>'." $message2 ".'</div>';
+              $result = "<div class='alert alert-danger alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Oops.. Something went Wrong.</strong></h4>
+                <p class='text-center'>Please check your Inputs and try again.</p>
+                </div>";
             }
     }
 
@@ -33,7 +36,7 @@ include_once 'include/story.php';
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>assault</title>
+    <title>Share Story</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
@@ -86,18 +89,23 @@ include_once 'include/story.php';
             <div class="image"
                 style="background-image: url('assets/img/report.jpg')">
             </div>
+
             <div class="container">
                 <div class="content">
+
+                    <?php 
+                        echo "$result";
+                    ?>
+
                     <div class="title-area">
-                        <h1 class="title-modern">SHARE YOUR STORY </h1>
+                        <h1 class="title-modern">Share Story</h1>
                         <div class="separator line-separator">♦</div>
-                        <h3>If you think you don't want to share your report for others to see and read, you can reach directly to por partners.</h2>
+                        <h3>Testimony is a story been told to people about the success gained after undergoing a therapy or medical care gotten from our partners.</h2>
                         <div class="separator line-separator">♦</div>
                     </div>
+                   
                 </div>
-                 <div>
-                    <?php echo $result;?>
-                </div>
+
             </div>
         </div>
     </div>
@@ -106,11 +114,15 @@ include_once 'include/story.php';
     <div class="section">
         <div class="container">
             <div class="row"   >
-                <div class="separator line-separator">♦</div>
-                        <h3>share your stories of experience to you or anyone you know was affected by this evil act.</h2>
-                <div class="separator line-separator">♦</div
+                <div class="title-area">
+                    <h2>Why You Should Tell your Testimony.</h2>
+                    <div class="separator separator-danger">✻</div>
+                    <p class="description">The information that will be collected here is used to help enhance understanding of our society climate so that we may strengthen sexual violence response and prevention efforts.
+                    Survivors can also use this form to tell how he/she got support.So that  Survivors who may not initially be inclined to report a sexual assault to the police or to other Law Enforcement have the right to change their mind at any time. The stroy being told by an individual will help someone of similar case to be revived.</p>
+                </div>
         </div>
     </div>
+
 
     <div class="section section-our-team-freebie">
         <div class="parallax filter">
@@ -119,60 +131,53 @@ include_once 'include/story.php';
             </div>
             <div class="container">
                 <div class="title-area">
-                    <h2 class="text-white">Story Form</h2>
-
+                    <h2 class="text-white">Story Form.</h2>
                 </div>
-               
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Please leave this section blank if you do not wish to be contacted</h3>
                     <div class="separator line-separator">♦</div>
                     <form action="share_story.php" method="post">
-                          <div class="form-group">
+                      <div class="form-group">
                             <h4>Phone Number:</h4>
                             <input type="phone" class="form-control" name="phone" required="">
-                          </div>
-                          <div class="form-group">
-                            <h4>Email:</h4>
-                            <input type="email" class="form-control" name="email" required="">
-                          </div>
-                        
-                    </div>
-
-                    <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                        <h3>Reporter Information</h3>
-                        <div class="separator line-separator">♦</div>
-                        
-                          <div class="form-group">
-                            <h4>First Name:</h4>
-                            <input type="text" class="form-control" name="first_name" required="">
-                          </div>
-                          <div class="form-group">
-                            <h4>Last Name(Optional):</h4>
-                            <input type="text" class="form-control" name="last_name">
-                          
-                          
-                        
-                    </div>    
-                  
-                    <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-
-                        <h3>make report:</h3>
-                        <div class="separator line-separator">♦</div>
-                            <div class="form-group">
-                            <h4>make sure the story guine. </h4>
-                            <textarea class="form-control" rows="10" name="story" maxlength="100" required="">
-                            
-                                
-                            </textarea>
-                           </div> 
-                  
-                  <div class="button-get-started">
-                        <input class="btn btn-danger btn-fill btn-lg active" role="button" aria-pressed="true" name="click" type="submit">
-                    </div>
-                 </form>    
+                        </div>
+                      <div class="form-group">
+                        <h4>Email:</h4>
+                        <input type="email" class="form-control" name="email" required="">
+                       
+                      </div>
                 </div>
-            </div>
-        </div>
+
+                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
+                    <h3>Your Personal Details:</h3>
+                    <div class="separator line-separator">♦</div>
+                      <div class="form-group">
+                        <h4>First Name:</h4>
+                        <input type="text" class="form-control" name="first_name" required="">
+                      </div>
+                      <div class="form-group">
+                        <h4>Last Name(Optional):</h4>
+                        <input type="text" class="form-control" name="last_name">
+                      </div>            
+                </div>              
+                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
+                    <h3>Write Your Story Below:</h3>
+                    <div class="separator line-separator">♦</div>
+
+                      <div class="form-group">
+                        <!-- <h4>Don't leave any stone unturned.</h4> -->
+                        <textarea class="form-control" rows="30" name="story" required="">                        
+                       </textarea>
+                        </div>
+                    
+
+                    <div class="button-get-started">
+                         <input class="btn btn-danger btn-fill btn-lg " role="button" name="click" type="submit" aria-pressed="true">
+                    </div>
+                  </form>  
+                </div>
+
+          </div>
      </div>   
 
     <footer class="footer footer-big footer-color-black" data-color="black">
