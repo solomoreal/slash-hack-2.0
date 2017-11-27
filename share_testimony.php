@@ -4,18 +4,19 @@
     if (isset($_POST['click'])){
     
         $testimony = Testimony::instantiate($_POST);
-         $header = ' Share Testimony';
-          $message ='Your Testimony was successsfully Shared.';
-          $message2 = 'your Testimony was not shared, Try again!';
           if($testimony){
                 if ($testimony->TellTestimony()){
-                   $result = '<div class="alert alert-success alert-dismissible" role="alert">
-                          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                          <strong>Success!</strong>'." $header ".'<hr/>'." $message ".'</div>'.'<br>'.'<p class="text-center">You are almost there, go to your inbox and confirm the link sent to You.</p>';
+                   $result = "<div class='alert alert-success alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Testimony Submitted Successfully</strong></h4>
+                <p class='text-center'>Thank you for Sharing your Testimony with Us.</p>
+                </div>";
                 }else {
-                  $result = '<div class="alert alert-danger alert-dismissible" role="alert">
-                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <strong> OOops! </strong>' ." $header ". '<hr/>'." $message2 ".'</div>';
+                  $result = "<div class='alert alert-success alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Oops.. Something went Wrong.</strong></h4>
+                <p class='text-center'>Please check your Inputs and try again.</p>
+                </div>";
                 }
             
     }
@@ -86,9 +87,14 @@
             <div class="image"
                 style="background-image: url('assets/img/report.jpg')">
             </div>
-            
+
             <div class="container">
                 <div class="content">
+
+                    <?php 
+                        echo "$result";
+                    ?>
+
                     <div class="title-area">
                         <h1 class="title-modern">Tell Your Testimony</h1>
                         <div class="separator line-separator">♦</div>
@@ -115,9 +121,6 @@
         </div>
     </div>
 
-    <?php 
-        echo "$result";
-    ?>
 
     <div class="section section-our-team-freebie">
         <div class="parallax filter">
