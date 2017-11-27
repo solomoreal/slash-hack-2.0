@@ -4,22 +4,26 @@ include_once 'include/story.php';
     $result = '';
     if (isset($_POST['click'])){
         $story = Story::instantiate($_POST);
-        // var_dump($story);
+        
 
-          if($story)
-            if ($story->TellStory()){
-                $result = "<div class='alert alert-success alert-dismissable'>
-                                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
-                                <h4 class='text-center'><strong>Story Submitted Successfully</strong></h4>
-                                <p class='text-center'>Thank you for Sharing your Story with Us.</p>
-                                </div>";
-            }else {
-              $result = "<div class='alert alert-danger alert-dismissable'>
-                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <h4 class='text-center'><strong>Oops.. Something went Wrong.</strong></h4>
-                <p class='text-center'>Please check your Inputs and try again.</p>
-                </div>";
-            }
+        if($story){
+            $story->attach_file($_FILES['passport']);
+
+                if ($story->save_with_file()){
+                    $result = "<div class='alert alert-success alert-dismissable'>
+                                    <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                                    <h4 class='text-center'><strong>Story Submitted Successfully</strong></h4>
+                                    <p class='text-center'>Thank you for Sharing your Story with Us.</p>
+                                    </div>";
+                }else {
+                  $result = "<div class='alert alert-danger alert-dismissable'>
+                    <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <h4 class='text-center'><strong>Oops.. Something went Wrong.</strong></h4>
+                    <p class='text-center'>Please check your Inputs and try again.</p>
+                    </div>";
+                }
+        }
+            
     }
 
 
@@ -75,7 +79,7 @@ include_once 'include/story.php';
                     </li>
 
                    <li>
-                        <a href="get-involved.html" id="menu">Get Involved</a>
+                        <a href="get_involved.php" id="menu">Get Involved</a>
                     </li>
                 </ul>
             </div>
@@ -136,7 +140,11 @@ include_once 'include/story.php';
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Please leave this section blank if you do not wish to be contacted</h3>
                     <div class="separator line-separator">♦</div>
-                    <form action="share_story.php" method="post">
+                    <form action="share_story.php" method="post" enctype="multipart/form-data">
+                        <div class="form-group ">
+                         <h4>Passport</h4>
+                         <input class="form-control" type="file" name="passport"  required="">
+                        </div>
                       <div class="form-group">
                             <h4>Phone Number:</h4>
                             <input type="phone" class="form-control" name="phone" required="">
