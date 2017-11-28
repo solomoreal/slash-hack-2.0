@@ -47,19 +47,19 @@
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="user.html">
+                    <a href="user.php">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Table List</p>
                     </a>
@@ -192,13 +192,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control"  placeholder="Username" value="michael23">
+                                                <input type="text" class="form-control"  placeholder="Username" value="<?php echo $user_id->first_name;?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control"  placeholder="Email">
+                                                <input type="email" class="form-control"  placeholder="Email" value="<?php echo $user_id->email ;?>">
                                             </div>
                                         </div>
                                     </div>
@@ -207,13 +207,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control"  placeholder="Company" value="Mike">
+                                                <input type="text" class="form-control"  placeholder="Company" value="<?php echo $user_id->first_name;?>">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control"  placeholder="Last Name" value="Andrew">
+                                                <input type="text" class="form-control"  placeholder="Last Name" value="<?php echo $user_id->last_name;?>">
                                             </div>
                                         </div>
                                     </div>
@@ -222,7 +222,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control"  placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                                <input type="text" class="form-control"  placeholder="Home Address" value="<?php echo $user_id->address;?>">
                                             </div>
                                         </div>
                                     </div>
@@ -231,28 +231,22 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>City</label>
-                                                <input type="text" class="form-control"  placeholder="City" value="Mike">
+                                                <input type="text" class="form-control"  placeholder="City" value="<?php echo $user_id->city;?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Country</label>
-                                                <input type="text" class="form-control"  placeholder="Country" value="Andrew">
+                                                <input type="text" class="form-control"  placeholder="Country" value="<?php echo $user_id->country;?>">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Phone number</label>
-                                                <input type="number" class="form-control"  placeholder="Phone number">
-                                            </div>
-                                        </div>
-                                    </div>
+                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>About Me</label>
-                                                <textarea rows="5" class="form-control"  placeholder="Here can be your description" value="Mike">I am willing to stand up for the little and vulnerable people.</textarea>
+                                                <textarea rows="5" class="form-control"  placeholder="Here can be your description" value="<?php echo $user_id->intrest;?>">I am willing to stand up for the little and vulnerable people.</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -271,7 +265,7 @@
                             <div class="content">
                                 <div class="author">
                                      <a href="#">
-                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
+                                    <img class="avatar border-gray" src="image/logo/<?php echo $user_id->logo;?>"  alt="..."/>
 
                                       <h4 class="title">Mike Andrew<br />
                                          <small>michael24</small>

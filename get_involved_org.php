@@ -1,39 +1,25 @@
 <?php 
-
-
-      include_once "include/partner.php";
+      include_once "include/Organisation.php";
+      include_once "include/Individual.php";
       include_once ('include/session.php');
       include_once ('include/function.php'); 
-      
+      // if(!$session->is_logged_in()) redirect('logout.php');
       $msg = '';
-      if(isset($_POST['OrganisationSubmit'])){
-        $partner = Partner::instantiate($_POST);
-        var_dump($partner);
-        if($partner){
-
-            $partner->attach_file($_FILES['passport']);
-          if($partner->save_with_file()){
-            $msg = "<div class='alert alert-success alert-dismissable'>
-                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <h4 class='text-center'><strong>Thank You for Partnering with Us.</strong></h4>
-                <p class='text-center'>You are almost there, go to your inbox and confirm the link sent to You.</p>
-                </div>";
+      if(isset($_POST['submit'])){
+        $ind = Organisation::instantiate($_POST);
+       
+        if($ind){
+          if($ind->insertOrg()){
+            $msg = 'Organisation Created Successfully.';
           }else{
-            $msg = "<div class='alert alert-danger alert-dismissable'>
-                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <h4 class='text-center'><strong>Registration Failed!</strong></h4>
-                <p class='text-center'>Something went wrong, check your inputs and try again.</p>
-                </div>";
+            $msg = 'Failed to create new Organisation .';
           }
         }else{
-          $msg = 'Failed to create Partner .';
+          $msg = 'Failed to create Organisation .';
         }
       }
-
-
-
-
-?>
+       
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +30,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Get Involved</title>
+    <title>assault</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
@@ -83,7 +69,7 @@
                     </li>
 
                    <li>
-                        <a href="get_involved.php" id="menu">Get Involved</a>
+                        <a href="#" id="menu">Get Involved</a>
                     </li>
                 </ul>
             </div>
@@ -95,17 +81,14 @@
     <div class="section section-header">
         <div class="parallax filter filter-color-black">
             <div class="image"
-                style="background-image: url('assets/img/full-screen-image-3.jpg')">
+                style="background-image: url('assets/img/report.jpg')">
             </div>
             <div class="container">
                 <div class="content">
-                <?php
-                    echo "$msg";
-                 ?>
                     <div class="title-area">
-                        <h1 class="title-modern">Get Involved</h1>
+                        <h1 class="title-modern">Get invloved as an organisation</h1>
                         <div class="separator line-separator">♦</div>
-                        <h3>Reporting a sexual crime is already a daunting task in our today society, so we hope to remove stigmas surrounding sexual assault and other related Violence.</h2>
+                        <h3>Your support will be appreciated as it will go a long way to reduce the occurence of physsical and emotional abuse </h3>
                         <div class="separator line-separator">♦</div>
                     </div>
                 </div>
@@ -119,9 +102,10 @@
         <div class="container">
             <div class="row"   >
                 <div class="title-area">
-                    <h2>Who are our Partners</h2>
+                    <h2>Why should you get involved?</h2>
                     <div class="separator separator-danger">✻</div>
-                    <p class="description">We are willing to work with any Concerned  Individual or Organisation to provide help to Individuals Affected by these Issues. Help Us try to Make the world a better place devoid from Sexual Assault and Domestic Violence</p>
+                    <p class="description">The information that will be collected here is used to help enhance understanding of our society climate so that we may strengthen sexual violence response and prevention efforts.
+                    Survivors can also use this form to request support. Survivors who may not initially be inclined to report a sexual assault to the police or to other Law Enforcement have the right to change their mind at any time. Information the Individual provides on this reporting form can be used at any time should the survivor so choose.</p>
                 </div>
         </div>
     </div>
@@ -133,75 +117,47 @@
             </div>
             <div class="container">
                 <div class="title-area">
-                    <h2 class="text-white">Get Involved And Partner With Us:</h2>
+                    <h2 class="text-white">Report Form</h2>
                 </div>
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
+                    <h3>Please leave this section blank if you do not wish to be contacted</h3>
                     <div class="separator line-separator">♦</div>
-                    <form action="get_involved.php" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <h4>Get Involved as:</h4>
-                            <select class="form-control" required="" name="role">
-                                <option>Orgainisation</option>
-                                <option>Individual</option>
-                            </select>
-                        </div>
+                    <form action="get_involved_org.php" method="post">
 
                         <div class="form-group">
-                            <h4>Name of organisation/Individual:</h4>
-                            <input type="text" class="form-control" name="name" required="">
+                            <h4>Name of organisation</h4>
+                            <input type="text" class="form-control" name="org_name">
                         </div>
 
                         <div class="form-group">
                             <h4>Email</h4>
-                            <input type="email" class="form-control" name="email" required="">
+                            <input type="email" class="form-control" name="email">
                         </div>
 
                         <div class="form-group">
-                            <h4>Location</h4>
-                            <input type="text" class="form-control" name="location" required="">
-                        </div>
-                           
-                        <div class="form-group">
-                            <h4>Website (if available):</h4>
-                            <input type="text" class="form-control" name="website" >
+                            <h4>Headquarters</h4>
+                            <input type="text" class="form-control" name="headquarters">
                         </div>
 
                         <div class="form-group">
                             <h4>Password</h4>
-                            <input type="password" class="form-control" name="password" required="">
+                            <input type="password" class="form-control" name="password">
                         </div>
-
-                        <div class="form-group">
-                            <h4>profile Pic/Organisation Logo:</h4>
-                            <input type="file" class="form-control" name="passport" required="
-                            ">
-                        </div>
-
-                        <div class="form-group">
-                            <h4>Interested In:</h4>
-                            <select class="form-control" required="" name="interest">
-                                <option>Domestic Violence</option>
-                                <option>Sexual assault</option>
-                            </select>
-                        </div>
-
                         <!-- make reason drop down -->
                          <div class="form-group">
-                            <h4>Tell Us More About Yourself:</h4>
-                            <!-- <input type="text" class="form-control" name="reason"> -->
-                            <textarea class="form-control" name="aboutme" rows="5" required="" ></textarea>
+                            <h4>Reason for interest</h4>
+                            <input type="text" class="form-control" name="reason">
                         </div>
 
                        
 
                         <div class='col'>
-                            <button type='submit' name='OrganisationSubmit' class ='btn button-get-started'>Submit Form</button>
+                            <button type='submit' name='submit' class ='btn button-get-started'>Submit Form</button>
                         </div>
-
                     </form>
                 </div>
-                </div>
             </div>
+        </div>
         </div>
 
     <footer class="footer footer-big footer-color-black" data-color="black">

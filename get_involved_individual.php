@@ -1,3 +1,26 @@
+<?php 
+      include_once "include/Organisation.php";
+      include_once "include/Individual.php";
+      include_once ('include/session.php');
+      include_once ('include/function.php'); 
+      // if(!$session->is_logged_in()) redirect('logout.php');
+      $msg = '';
+      if(isset($_POST['submit'])){
+        $ind = Individual::instantiate($_POST);
+       
+        if($ind){
+          if($ind->insertIndiv()){
+            $msg = 'Organisation Created Successfully.';
+          }else{
+            $msg = 'Failed to create new Organisation .';
+          }
+        }else{
+          $msg = 'Failed to create Organisation .';
+        }
+      }
+       
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +30,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Share Your Story</title>
+    <title>assault</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
@@ -46,7 +69,7 @@
                     </li>
 
                    <li>
-                        <a href="get_involved.php" id="menu">Get Involved</a>
+                        <a href="#" id="menu">Get Involved</a>
                     </li>
                 </ul>
             </div>
@@ -63,9 +86,9 @@
             <div class="container">
                 <div class="content">
                     <div class="title-area">
-                        <h1 class="title-modern">Share Your Story</h1>
+                        <h1 class="title-modern">Get involved as an individual</h1>
                         <div class="separator line-separator">♦</div>
-                        <h3>Help Let other Other Individuals Know there are not alone in this by share your past experiences with us and how you were able to overcome it.</h2>
+                        <h3> Nothing you do is too little to save a life. Register here  </h3>
                         <div class="separator line-separator">♦</div>
                     </div>
                 </div>
@@ -79,10 +102,10 @@
         <div class="container">
             <div class="row"   >
                 <div class="title-area">
-                    <h2>Why You Should Share Your Story.</h2>
+                    <h2>Why Should you get involved</h2>
                     <div class="separator separator-danger">✻</div>
                     <p class="description">The information that will be collected here is used to help enhance understanding of our society climate so that we may strengthen sexual violence response and prevention efforts.
-                    Survivors can also use this form to tell how he/she got support.So that  Survivors who may not initially be inclined to report a sexual assault to the police or to other Law Enforcement have the right to change their mind at any time. The stroy being told by an individual will help someone of similar case to be revived.</p>
+                    Survivors can also use this form to request support. Survivors who may not initially be inclined to report a sexual assault to the police or to other Law Enforcement have the right to change their mind at any time. Information the Individual provides on this reporting form can be used at any time should the survivor so choose.</p>
                 </div>
         </div>
     </div>
@@ -94,55 +117,46 @@
             </div>
             <div class="container">
                 <div class="title-area">
-                    <h2 class="text-white">Story Form</h2>
+                    <h2 class="text-white">Please fill this Form</h2>
                 </div>
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <h3>Please leave this section blank if you do not wish to be contacted</h3>
+                    <!-- <h3>Please leave this section blank if you do not wish to be contacted</h3> -->
                     <div class="separator line-separator">♦</div>
-                    <form>
-                      <div class="form-group">
-                        <h4>Phone Number:</h4>
-                        <input type="phone" class="form-control" name="phone">
-                      </div>
-                      <div class="form-group">
-                        <h4>Email:</h4>
-                        <input type="email" class="form-control" name="email">
-                      </div>
+                    <form action="get_involved_individual.php" method="post">
+
+                        <div class="form-group">
+                            <h4>First name</h4>
+                            <input type="text" class="form-control" name="firstname">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Last name</h4>
+                            <input type="text" class="form-control" name="firstname">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Email:</h4>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Password</h4>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Confirm password</h4>
+                            <input type="password" class="form-control" name="confirm">
+                        </div>
+
+                        <div class='col'>
+                            <button type='submit' name='submit' class ='btn button-get-started'>Submit Form</button>
+                        </div>
                     </form>
                 </div>
-
-                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <h3>Your Information</h3>
-                    <div class="separator line-separator">♦</div>
-                    <form>
-                      <div class="form-group">
-                        <h4>First Name:</h4>
-                        <input type="text" class="form-control" name="first_name">
-                      </div>
-                      <div class="form-group">
-                        <h4>Last Name(Optional):</h4>
-                        <input type="text" class="form-control" name="last_name">
-                      </div>
-                    </form>
-                </div>              
-                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <h3>Tell Your Story:</h3>
-                    <div class="separator line-separator">♦</div>
-                    <form>
-                      <div class="form-group">
-                        <h4>Don't Leave Any Stone Unturned:</h4>
-                        <textarea class="form-control" rows="25">
-                        </textarea>
-                      </div>
-                    </form>
-
-                    <div class="button-get-started">
-                        <a href="#" class="btn btn-danger btn-fill btn-lg">Share Story</a>
-                    </div>
-                 </div>
             </div>
         </div>
-     </div>   
+        </div>
 
     <footer class="footer footer-big footer-color-black" data-color="black">
         <div class="container">
@@ -158,7 +172,7 @@
                                     <a href="#">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="#">Work place Assualt</a>
+                                    <a href="#">Work placr Assualt</a>
                                 </li>
                                 <li>
                                     <a href="#">Domestic Assualt</a>

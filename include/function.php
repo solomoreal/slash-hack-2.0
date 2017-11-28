@@ -1,17 +1,13 @@
+ <?php 
+ function redirect ($location = ''){
+        header ("location: $location");
+     }
 
-<?php
-//function message($header, $status, $warning){
-	
+ function displayMessage($title, $message, $color){
+ 		echo "<div class='alert alert-'$color'>
+ 			<strong>'$title'</strong>
+ 			'$message'
+ 		</div>";
+ }
 
-	//}
-
-function redirect ( $location = ''){
-		header("location: $location");
-	}
-
-	/*function comfirmPassword($password1 , $password2){
-		if ($password1 == $password2) {
-			return password1;
-		}else echo("password mismatch");
-			}*/
-?>
+   ?>
