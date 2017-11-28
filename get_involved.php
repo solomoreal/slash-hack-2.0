@@ -199,9 +199,17 @@
                             ">
                         </div>
 
+                        <div class="form-group">
+                            <h4>Interested In:</h4>
+                            <select class="form-control" required="" name="reason">
+                                <option>Domestic Violence</option>
+                                <option>Sexual assault</option>
+                            </select>
+                        </div>
+
                         <!-- make reason drop down -->
                          <div class="form-group">
-                            <h4>Reason for interest</h4>
+                            <h4>Tell Us More About Yourself:</h4>
                             <!-- <input type="text" class="form-control" name="reason"> -->
                             <textarea class="form-control" name="interest" rows="5" required=""></textarea>
                         </div>
