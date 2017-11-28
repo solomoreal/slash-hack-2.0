@@ -155,18 +155,21 @@
             </div>
             <div class="container">
                 <div class="title-area">
-                    <h2 class="text-white">Get Involved As an Organisation</h2>
+                    <h2 class="text-white">Get Involved And Partner With Us:</h2>
                 </div>
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <div class="separator line-separator">♦</div>
                     <form action="get_involved.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <h4>LOGO</h4>
-                            <input type="file" class="form-control" name="logo" required="
-                            ">
+                            <h4>Get Involved as:</h4>
+                            <select class="form-control" required="" name="role">
+                                <option>Orgainisation</option>
+                                <option>Individual</option>
+                            </select>
                         </div>
+
                         <div class="form-group">
-                            <h4>Name of organisation</h4>
+                            <h4>Name of organisation/Individual:</h4>
                             <input type="text" class="form-control" name="name" required="">
                         </div>
 
@@ -176,19 +179,9 @@
                         </div>
 
                         <div class="form-group">
-                            <h4>Headquarters</h4>
+                            <h4>Location</h4>
                             <input type="text" class="form-control" name="location" required="">
                         </div>
-                        <div class="form-group">
-                            <h4>City</h4>
-                                <input type="text" class="form-control"  placeholder="City" name="city">
-                        </div>
-                         <div class="form-group">
-                            <h4>Country</h4>
-                                <input type="text" class="form-control"  placeholder="Country" name="country">
-                        </div>
-                                        
-
                            
                         <div class="form-group">
                             <h4>Website (if available):</h4>
@@ -198,6 +191,12 @@
                         <div class="form-group">
                             <h4>Password</h4>
                             <input type="password" class="form-control" name="password" required="">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>profile Pic/Organisation Logo:</h4>
+                            <input type="file" class="form-control" name="logo" required="
+                            ">
                         </div>
 
                         <!-- make reason drop down -->
@@ -216,76 +215,6 @@
                 </div>
                 </div>
             </div>
-        </div>
-
-        <div class="section section-our-team-freebie">
-        <div class="parallax filter">
-            <div class="image"
-                style="background-image: url('assets/img/invovle.jpg')">
-            </div>
-            <div class="container">
-                <div class="title-area">
-                    <h2 class="text-white">Get Involved As an Individual</h2>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <div class="separator line-separator">♦</div>
-                    <form action="get_involved.php" method="post" enctype="multipart/form-data">
-
-                        <div class="form-group">
-                            <h4>passport</h4>
-                            <input type="file" class="form-control" name="passport" required="
-                            ">
-                        </div>
-
-                        <div class="form-group">
-                            <h4>First name</h4>
-                            <input type="text" class="form-control" name="first_name" required="
-                            ">
-                        </div>
-
-                        <div class="form-group">
-                            <h4>Last name</h4>
-                            <input type="text" class="form-control" name="last_name" required="">
-                        </div>
-
-                        <div class="form-group">
-                            <h4>Email:</h4>
-                            <input type="email" class="form-control" name="email" required="">
-                        </div>
-
-                        <div class="form-group">
-                            <h4>Password</h4>
-                            <input type="password" class="form-control" name="password" required="">
-                        </div>
-
-                        <div class="form-group">
-                            <h4>Location:</h4>
-                            <input type="text" class="form-control" name="location" required="">
-                        </div>
-                          <div class="form-group">
-                            <h4>City</h4>
-                                <input type="text" class="form-control"  placeholder="City" name="city">
-                        </div>
-                         <div class="form-group">
-                            <h4>Country</h4>
-                                <input type="text" class="form-control"  placeholder="Country" name="country">
-                        </div>
-                           
-                        <div class="form-group">
-                            <h4>Reason for Interest:</h4>
-                            <!-- <input type="password" class="form-control" name="interest"> -->
-                            <textarea class="form-control" name="interest" rows="5" required=""></textarea>
-                        </div>
-
-                        <div class='col'>
-                            <button type='submit' name='IndividualSubmit' class ='btn button-get-started'>Submit Form</button>
-                        </div>
-                    </form>
-                </div>
-
-                </div>
-            </div>
-        </div>
         </div>
 
     <footer class="footer footer-big footer-color-black" data-color="black">
