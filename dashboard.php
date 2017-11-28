@@ -142,7 +142,7 @@
 
 
                                   <div class="font-icon-list col-lg-6 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                      <a href="table.php">
+                                      <a href="">
                                         <div class="font-icon-detail"><i class="pe-7s-user"></i>
                                           <input type="text" value="Get in touch with the people affected">
                                         </div>
@@ -150,7 +150,7 @@
                                   </div>
 
                                   <div class="font-icon-list col-lg-6 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                    <a href="">
+                                    <a href="table.php">
                                         <div class="font-icon-detail"><i class="pe-7s-global"></i>
                                           <input type="text" value="Get in touch with the organisations involved">
                                         </div>

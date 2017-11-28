@@ -47,19 +47,19 @@
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="user.html">
+                    <a href="user.php">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Table List</p>
                     </a>
@@ -265,7 +265,7 @@
                             <div class="content">
                                 <div class="author">
                                      <a href="#">
-                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
+                                    <img class="avatar border-gray" src="image/logo/<?php echo $user_id->logo;?>"  alt="..."/>
 
                                       <h4 class="title">Mike Andrew<br />
                                          <small>michael24</small>
