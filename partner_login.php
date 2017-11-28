@@ -1,6 +1,6 @@
 
 <?php 
-  include_once 'include/partners.php';
+  include_once 'include/partner.php';
   include_once 'include/function.php';
   include_once 'include/session.php';
 
@@ -10,12 +10,12 @@
     $password = $_POST['password'];
     $email = $_POST['email'];
     
- if(authenticate($password, $email))
-    
+ $partner = Partner::authenticate($password, $email);
+    if($partner)
     {
                  $session->login($partner); 
                 // $msg = 'login Successful.';
-                 header("location: dashboard.html");
+                 header("location: dashboard.php");
     
              }
       else{
