@@ -11,7 +11,7 @@
 		public $interest;
 		public $password;
 		public $passport;
-		public $aboutme
+		public $aboutme;
 		public $error = array();
 
 		public static $class_name = 'Partner';
@@ -86,7 +86,7 @@
 	 				$this->setPartnerid();
 
 	 			$this->temp_path = $file['tmp_name'];
-	 			$this->logo = str_replace("/", "_", $this->partner_id).".".basename($file["type"]);
+	 			$this->passport = str_replace("/", "_", $this->partner_id).".".basename($file["type"]);
 	 			$this->type = $file['type'];
 	 			$this->size = $file['size'];
 	 			return true;
