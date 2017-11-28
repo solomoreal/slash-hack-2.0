@@ -1,6 +1,7 @@
 <?php 
 
-    include_once "include/partner.php";
+
+      include_once "include/partner.php";
       include_once ('include/session.php');
       include_once ('include/function.php'); 
       
@@ -196,6 +197,7 @@
                         <div class='col'>
                             <button type='submit' name='OrganisationSubmit' class ='btn button-get-started'>Submit Form</button>
                         </div>
+
                     </form>
                 </div>
                 </div>

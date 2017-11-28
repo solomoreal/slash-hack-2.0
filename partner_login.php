@@ -1,3 +1,32 @@
+
+<?php 
+  include_once 'include/partners.php';
+  include_once 'include/function.php';
+  include_once 'include/session.php';
+
+  $msg = '';
+  
+  if(isset($_POST['login'])){
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    
+ if(authenticate($password, $email))
+    
+    {
+                 $session->login($partner); 
+                // $msg = 'login Successful.';
+                 header("location: dashboard.html");
+    
+             }
+      else{
+        $msg = 'login Failed try again';
+        }
+    }
+  
+    
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,7 +96,7 @@
                         <div class="separator line-separator">♦</div>
                         <h4>please fill the login form to see latest reports in your dashboard</h4>
                         <div class="separator line-separator">♦</div>
-                        <form method="post" action="partner_login.html">
+                        <form method="post" action="partner_login.php">
                       <div class="form-group">
                         <h4>email:</h4>
                         <input type="email" class="form-control" name="email">
@@ -77,7 +106,7 @@
                         <input type="password" class="form-control" name="password">
                       </div>
                       <div class="button-get-started">
-                        <a href="#" class="btn btn-danger btn-fill btn-lg" type="submit" name="login">login</a>
+                        <input value="login" class="btn btn-danger btn-fill btn-lg" type="submit" name="login">
                     </div>
                     </form>
                     </div>
