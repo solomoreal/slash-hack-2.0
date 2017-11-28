@@ -10,7 +10,8 @@
         $ind = Individual::instantiate($_POST);
        
         if($ind){
-          if($ind->insertPartner()){
+            $ind->attach_file($_FILES['passport']);
+          if($ind->save_with_file()){
             $msg = "<div class='alert alert-success alert-dismissable'>
                 <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
                 <h4 class='text-center'><strong>Thank You for Partnering with Us.</strong></h4>
@@ -24,15 +25,16 @@
                 </div>";
           }
         }else{
-          $msg = 'Failed to create Organisation .';
+          $msg = 'Failed to create Partner .';
         }
       }
 
       if(isset($_POST['OrganisationSubmit'])){
-        $ind = Organisation::instantiate($_POST);
+        $org = Organisation::instantiate($_POST);
        
-        if($ind){
-          if($ind->insertPartner()){
+        if($org){
+            $org->attach_file($_FILES['logo']);
+          if($org->save_with_file()){
             $msg = "<div class='alert alert-success alert-dismissable'>
                 <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
                 <h4 class='text-center'><strong>Thank You for Partnering with Us.</strong></h4>
@@ -157,38 +159,52 @@
                 </div>
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <div class="separator line-separator">♦</div>
-                    <form action="get_involved.php" method="post">
-
+                    <form action="get_involved.php" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h4>LOGO</h4>
+                            <input type="file" class="form-control" name="logo" required="
+                            ">
+                        </div>
                         <div class="form-group">
                             <h4>Name of organisation</h4>
-                            <input type="text" class="form-control" name="name">
+                            <input type="text" class="form-control" name="name" required="">
                         </div>
 
                         <div class="form-group">
                             <h4>Email</h4>
-                            <input type="email" class="form-control" name="email">
+                            <input type="email" class="form-control" name="email" required="">
                         </div>
 
                         <div class="form-group">
                             <h4>Headquarters</h4>
-                            <input type="text" class="form-control" name="location">
+                            <input type="text" class="form-control" name="location" required="">
                         </div>
+                        <div class="form-group">
+                            <h4>City</h4>
+                                <input type="text" class="form-control"  placeholder="City" name="city">
+                        </div>
+                         <div class="form-group">
+                            <h4>Country</h4>
+                                <input type="text" class="form-control"  placeholder="Country" name="country">
+                        </div>
+                                        
 
+                           
                         <div class="form-group">
                             <h4>Website (if available):</h4>
-                            <input type="text" class="form-control" name="website">
+                            <input type="text" class="form-control" name="website" required="">
                         </div>
 
                         <div class="form-group">
                             <h4>Password</h4>
-                            <input type="password" class="form-control" name="password">
+                            <input type="password" class="form-control" name="password" required="">
                         </div>
 
                         <!-- make reason drop down -->
                          <div class="form-group">
                             <h4>Reason for interest</h4>
                             <!-- <input type="text" class="form-control" name="reason"> -->
-                            <textarea class="form-control" name="interest" rows="5"></textarea>
+                            <textarea class="form-control" name="interest" rows="5" required=""></textarea>
                         </div>
 
                        
@@ -213,37 +229,52 @@
                 </div>
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <div class="separator line-separator">♦</div>
-                    <form action="get_involved.php" method="post">
+                    <form action="get_involved.php" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <h4>passport</h4>
+                            <input type="file" class="form-control" name="passport" required="
+                            ">
+                        </div>
 
                         <div class="form-group">
                             <h4>First name</h4>
-                            <input type="text" class="form-control" name="first_name">
+                            <input type="text" class="form-control" name="first_name" required="
+                            ">
                         </div>
 
                         <div class="form-group">
                             <h4>Last name</h4>
-                            <input type="text" class="form-control" name="last_name">
+                            <input type="text" class="form-control" name="last_name" required="">
                         </div>
 
                         <div class="form-group">
                             <h4>Email:</h4>
-                            <input type="email" class="form-control" name="email">
+                            <input type="email" class="form-control" name="email" required="">
                         </div>
 
                         <div class="form-group">
                             <h4>Password</h4>
-                            <input type="password" class="form-control" name="password">
+                            <input type="password" class="form-control" name="password" required="">
                         </div>
 
                         <div class="form-group">
                             <h4>Location:</h4>
-                            <input type="text" class="form-control" name="location">
+                            <input type="text" class="form-control" name="location" required="">
                         </div>
-
+                          <div class="form-group">
+                            <h4>City</h4>
+                                <input type="text" class="form-control"  placeholder="City" name="city">
+                        </div>
+                         <div class="form-group">
+                            <h4>Country</h4>
+                                <input type="text" class="form-control"  placeholder="Country" name="country">
+                        </div>
+                           
                         <div class="form-group">
                             <h4>Reason for Interest:</h4>
                             <!-- <input type="password" class="form-control" name="interest"> -->
-                            <textarea class="form-control" name="interest" rows="5"></textarea>
+                            <textarea class="form-control" name="interest" rows="5" required=""></textarea>
                         </div>
 
                         <div class='col'>
