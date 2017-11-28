@@ -5,6 +5,7 @@ class Model extends MyPDO{
 	protected static $class_name;
 	protected static $primary_key;
 	protected static $table_name;
+	protected static $table_name1;
 	protected static $table_fields;
 
 	public function __construct(){

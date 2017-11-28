@@ -9,7 +9,8 @@
      $individual = Individual::instantiate($_POST);
         if($individual){
           if($individual->insertPartner()){
-              $msg = "account created successfully";
+              $msg = "account creation successful! <br>click <a href='partner_login.php'> here </a> to log into your dashboard  ";
+
           }
         
         }else $msg = "fail to create account";
@@ -19,7 +20,7 @@
      $organisation = Organisation::instantiate($_POST);
         if($organisation){
           if($organisation->insertPartner()){
-              $msg = "account created successfully";
+              $msg = "account creation successful! <br>click <a href='partner_login.php'> here </a> to log into your dashboard  ";
           }
         
         }else $msg = "fail to create account";
@@ -128,7 +129,7 @@
             </div>
             <div class="container">
                 <div class="title-area">
-                    <h3>please click <a href="partner_login.html">here</a> to login if you already have an account</h3>
+                    <h3>please click <a href="partner_login.php">here</a> to login if you already have an account</h3>
                     <h2 class="text-white">Get Involved As an Organisation</h2>
                     <h3><?php echo "$msg";  ?></h3>
                 </div>
@@ -155,10 +156,7 @@
                         <h4>Password:</h4>
                         <input type="Password" class="form-control" name="Password">
                       </div>
-                      <div class="form-group">
-                        <h4>Cormfirm Password:</h4>
-                        <input type="Password" class="form-control" name="password1">
-                      </div>
+                      
                       <div class="form-group">
                           <h4>What Makes You Interested:</h4>
                           <textarea class="form-control" name="interest" rows="10"></textarea>
@@ -199,7 +197,7 @@
                       </div>
                        <div class="form-group">
                         <h4>Password:</h4>
-                        <input type="Password" class="form-control" name="Password">
+                        <input type="Password" class="form-control" name="Password1">
                       </div>
                       <div class="form-group">
                         <h4>Cormfirm Password:</h4>
