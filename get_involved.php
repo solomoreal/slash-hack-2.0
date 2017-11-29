@@ -1,28 +1,40 @@
-<?php 
-      include_once "include/Organisation.php";
-      include_once "include/Individual.php";
-      include_once ('include/session.php');
-      include_once ('include/function.php'); 
-      // if(!$session->is_logged_in()) redirect('logout.php');
-      $msg = '';
-      if(isset($_POST['submit'])){
-        $ind = Individual::instantiate($_POST);
-       
-        if($ind){
-          if($ind->insertIndiv()){
-            $msg = 'Organisation Created Successfully.';
-          }else{
-            $msg = 'Failed to create new Organisation .';
+
+<?php
+  include_once 'include/individual.php';
+  include_once 'include/organisation.php';
+
+  $msg = '';
+  
+  if(isset($_POST['submit1'])){
+     $individual = Individual::instantiate($_POST);
+        if($individual){
+          if($individual->insertPartner()){
+              $msg = "account created successfully";
           }
-        }else{
-          $msg = 'Failed to create Organisation .';
-        }
+        
+        }else $msg = "fail to create account";
       }
-       
- ?>
+   
+   if(isset($_POST['submit'])){
+     $organisation = Organisation::instantiate($_POST);
+        if($organisation){
+          if($organisation->insertPartner()){
+              $msg = "account created successfully";
+          }
+        
+        }else $msg = "fail to create account";
+      }
+     
+    
+    
+  
+    
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
     <meta charset="utf-8" />
@@ -30,7 +42,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>assault</title>
+    <title>Get Involved</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
@@ -69,7 +81,7 @@
                     </li>
 
                    <li>
-                        <a href="#" id="menu">Get Involved</a>
+                        <a href="get_involved.php" id="menu">Get Involved</a>
                     </li>
                 </ul>
             </div>
@@ -81,14 +93,14 @@
     <div class="section section-header">
         <div class="parallax filter filter-color-black">
             <div class="image"
-                style="background-image: url('assets/img/report.jpg')">
+                style="background-image: url('assets/img/full-screen-image-3.jpg')">
             </div>
             <div class="container">
                 <div class="content">
                     <div class="title-area">
-                        <h1 class="title-modern">Get involved as an individual</h1>
+                        <h1 class="title-modern">Get Involved</h1>
                         <div class="separator line-separator">♦</div>
-                        <h3> Nothing you do is too little to save a life. Register here  </h3>
+                        <h3>Reporting a sexual crime is already a daunting task in our today society, so we hope to remove stigmas surrounding sexual assault and other related Violence.</h2>
                         <div class="separator line-separator">♦</div>
                     </div>
                 </div>
@@ -102,10 +114,9 @@
         <div class="container">
             <div class="row"   >
                 <div class="title-area">
-                    <h2>Why Should you get involved</h2>
+                    <h2>Who are our Partners</h2>
                     <div class="separator separator-danger">✻</div>
-                    <p class="description">The information that will be collected here is used to help enhance understanding of our society climate so that we may strengthen sexual violence response and prevention efforts.
-                    Survivors can also use this form to request support. Survivors who may not initially be inclined to report a sexual assault to the police or to other Law Enforcement have the right to change their mind at any time. Information the Individual provides on this reporting form can be used at any time should the survivor so choose.</p>
+                    <p class="description">We are willing to work with any Concerned  Individual or Organisation to provide help to Individuals Affected by these Issues. Help Us try to Make the world a better place devoid from Sexual Assault and Domestic Violence</p>
                 </div>
         </div>
     </div>
@@ -117,42 +128,97 @@
             </div>
             <div class="container">
                 <div class="title-area">
-                    <h2 class="text-white">Please fill this Form</h2>
+                    <h3>please click <a href="partner_login.html">here</a> to login if you already have an account</h3>
+                    <h2 class="text-white">Get Involved As an Organisation</h2>
+                    <h3><?php echo "$msg";  ?></h3>
                 </div>
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <!-- <h3>Please leave this section blank if you do not wish to be contacted</h3> -->
                     <div class="separator line-separator">♦</div>
-                    <form action="get_involved_individual.php" method="post">
-
-                        <div class="form-group">
-                            <h4>First name</h4>
-                            <input type="text" class="form-control" name="firstname">
-                        </div>
-
-                        <div class="form-group">
-                            <h4>Last name</h4>
-                            <input type="text" class="form-control" name="firstname">
-                        </div>
-
-                        <div class="form-group">
-                            <h4>Email:</h4>
-                            <input type="email" class="form-control" name="email">
-                        </div>
-
-                        <div class="form-group">
-                            <h4>Password</h4>
-                            <input type="password" class="form-control" name="password">
-                        </div>
-
-                        <div class="form-group">
-                            <h4>Confirm password</h4>
-                            <input type="password" class="form-control" name="confirm">
-                        </div>
-
-                        <div class='col'>
-                            <button type='submit' name='submit' class ='btn button-get-started'>Submit Form</button>
-                        </div>
+                    <form method="post" action="get_involved.php">
+                      <div class="form-group">
+                        <h4>Name of Organisation:</h4>
+                        <input type="text" class="form-control" name="name">
+                      </div>
+                      <div class="form-group">
+                        <h4>Organisation Location:</h4>
+                        <input type="text" class="form-control" name="location">
+                      </div>
+                      <div class="form-group">
+                        <h4>Organisation website (if available):</h4>
+                        <input type="website" class="form-control" name="website">
+                      </div>
+                      <div class="form-group">
+                        <h4>Organisation Email Address:</h4>
+                        <input type="email" class="form-control" name="email">
+                      </div>
+                      <div class="form-group">
+                        <h4>Password:</h4>
+                        <input type="Password" class="form-control" name="Password">
+                      </div>
+                      <div class="form-group">
+                        <h4>Cormfirm Password:</h4>
+                        <input type="Password" class="form-control" name="password1">
+                      </div>
+                      <div class="form-group">
+                          <h4>What Makes You Interested:</h4>
+                          <textarea class="form-control" name="interest" rows="10"></textarea>
+                      </div>
+                      <div class="button-get-started">
+                        <button  class="btn btn-danger btn-fill btn-lg" type="submit" name="submit">Submit</button>
+                    </div>
                     </form>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-our-team-freebie">
+        <div class="parallax filter">
+            <div class="image"
+                style="background-image: url('assets/img/invovle.jpg')">
+            </div>
+            <div class="container">
+                <div class="title-area">
+                    <h2 class="text-white">Get Involved As an Individual</h2>
+                    <h3><?php echo "$msg";  ?></h3>
+                </div>
+                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
+                    <div class="separator line-separator">♦</div>
+                    <form method="post" action="get_involved.php">
+                      <div class="form-group">
+                        <h4>First Name:</h4>
+                        <input type="text" class="form-control" name="first_name">
+                      </div>
+                      <div class="form-group">
+                        <h4>Last Name:</h4>
+                        <input type="text" class="form-control" name="last_name">
+                      </div>
+                      <div class="form-group">
+                        <h4>Email Address:</h4>
+                        <input type="email" class="form-control" name="email">
+                      </div>
+                       <div class="form-group">
+                        <h4>Password:</h4>
+                        <input type="Password" class="form-control" name="Password">
+                      </div>
+                      <div class="form-group">
+                        <h4>Cormfirm Password:</h4>
+                        <input type="Password" class="form-control" name="password1">
+                      </div>
+                      <div class="form-group">
+                        <h4>Location:</h4>
+                        <input type="text" class="form-control" name="location">
+                      </div>
+                      <div class="form-group">
+                          <h4>What Makes You Interested:</h4>
+                          <textarea class="form-control" name="interest" rows="10"></textarea>
+                      </div>
+                      <div class="button-get-started">
+                        <button class="btn btn-danger btn-fill btn-lg" type="submit" name="submit1">Submit</button>
+                    </div>
+                    </form>
+                </div>
+
                 </div>
             </div>
         </div>
