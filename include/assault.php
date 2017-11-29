@@ -27,7 +27,7 @@ class AssaultReport extends Model
 
 
 	public static $class_name = 'AssaultReport';
-	public static $table_name  = 'assault_report';
+	public static $table_name  = 'report_assault';
 	public static $primary_key = 'report_id'; 
 	public static $table_fields = array ('reporter_first_name','reporter_last_name','report_id','reporter_email','survivor_first_name','survivor_last_name','survivor_gender','num_offenders','name_offenders','gender_offenders','relationship','date_of_assault','time_of_assault','location_assault','assault_type','influence','assault_desc');
 
