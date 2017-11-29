@@ -1,17 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
-/** 
+include_once 'include/testimony.php';
  $msg = '';
-  if (isset($_GET['id']) {
+  if (isset($_GET['id'])) {
     $testimony = Testimony::find($_GET['id']);
     
   }
   
-    $testimony = Testimony::all();
+     $testimony = Testimony::all();
 
-  */
- ?>
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
 
 <head>
     <meta charset="utf-8" />
@@ -99,35 +101,44 @@
     </div>
 
 
-    <div class="section">
-        <div class="container">
-            <div class="row"   >
-                    <div class="section section-our-team-freebie">
-        <div class="parallax filter filter-color-black">
-            <div class="image" style="background-image:url('assets/img/header-2.jpeg')">
+    
+ <?php
+        $model ='';
+                if ($testimony){
+                    foreach ($testimony as $testimony) {
+                        # code...
+                        $model.= "
+    <div class='section'>
+        <div class='container'>
+            <div class='row'   >
+                    <div class='section section-our-team-freebie'>
+        <div class='parallax filter filter-color-black'>
+            <div class='image' style='background-image:url('assets/img/header-2.jpeg')''>
             </div>
-            <div class="container">
-                <div class="content">
-                   <?php echo "we ll fetch the images and testimonies from the database and and dynamically generate the divs"  ?> 
-                    <div class="team">
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <div class="card card-member">
-                                            <div class="content">
-                                                <div class="avatar avatar-danger">
-                                                    <img alt="..." class="img-circle" src="assets/img/faces/face_1.jpg"/>
+            <div class='container'>
+                <div class='content'>
+                
+                    <div class='team'>
+                        <div class='row'>
+                            <div class='col-md-10 col-md-offset-1'>
+                                <div class='row'>
+                                    <div class='col-md-10 col-md-offset-1'>
+             
+                                        <div class='card card-member'>
+                                            <div class='content'>
+                                                <div class='avatar avatar-danger'>
+                                                    <img alt='...' class='img-circle' src='image/testimony/$testimony->passport'/>
                                                 </div>
                               
-                                                <div class="description">
-                                                    <h3 class="title">Tina</h3>
-                                                    <p class="small-text">CEO / Co-Founder</p>
-                                                    <p class="description">I miss the old Kanye I gotta say at that time I’d like to meet Kanye And I promise the power is in the people and I will use the power given by the people to bring everything I have back to the people.</p>
+                                                <div class='description'>
+                                                    <h3 class='title'> $testimony->first_name</h3>
+                                                    <p class='small-text'>$testimony->last_name</p>
+                                                    <p class='description'> $testimony->testimony.</p>
                                                     
                                                 </div>
                                             </div>
                                         </div>
+                           
                                     </div>
                                     
                                 </div>
@@ -141,7 +152,12 @@
 
                 </div>
             </div>
-        </div>
+        </div>";
+
+                    }
+echo $model;
+                        }
+ ?>    
 
     <footer class="footer footer-big footer-color-black" data-color="black">
         <div class="container">
