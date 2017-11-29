@@ -1,40 +1,41 @@
+<?php 
 
-<?php
-  include_once 'include/individual.php';
-  include_once 'include/organisation.php';
 
-  $msg = '';
-  
-  if(isset($_POST['submit1'])){
-     $individual = Individual::instantiate($_POST);
-        if($individual){
-          if($individual->insertPartner()){
-              $msg = "account created successfully";
+      include_once "include/partner.php";
+      include_once ('include/session.php');
+      include_once ('include/function.php'); 
+      
+      $msg = '';
+      if(isset($_POST['OrganisationSubmit'])){
+        $partner = Partner::instantiate($_POST);
+        if($partner){
+
+            $partner->attach_file($_FILES['passport']);
+          if($partner->save_with_file()){
+            $msg = "<div class='alert alert-success alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Thank You for Partnering with Us.</strong></h4>
+                <p class='text-center'>You are almost there, go to your inbox and confirm the link sent to You.</p>
+                </div>";
+          }else{
+            $msg = "<div class='alert alert-danger alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Registration Failed!</strong></h4>
+                <p class='text-center'>Something went wrong, check your inputs and try again.</p>
+                </div>";
           }
-        
-        }else $msg = "fail to create account";
+        }else{
+          $msg = 'Failed to create Partner .';
+        }
       }
-   
-   if(isset($_POST['submit'])){
-     $organisation = Organisation::instantiate($_POST);
-        if($organisation){
-          if($organisation->insertPartner()){
-              $msg = "account created successfully";
-          }
-        
-        }else $msg = "fail to create account";
-      }
-     
-    
-    
-  
-    
+
+
+
+
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
-
 
 <head>
     <meta charset="utf-8" />
@@ -77,7 +78,7 @@
                     </li>
                     
                     <li>
-                        <a href="report.html" id="menu" >Make A Report</a>
+                        <a href="report.php" id="menu" >Make A Report</a>
                     </li>
 
                    <li>
@@ -97,6 +98,9 @@
             </div>
             <div class="container">
                 <div class="content">
+                <?php
+                    echo "$msg";
+                 ?>
                     <div class="title-area">
                         <h1 class="title-modern">Get Involved</h1>
                         <div class="separator line-separator">♦</div>
@@ -128,100 +132,75 @@
             </div>
             <div class="container">
                 <div class="title-area">
-                    <h3>please click <a href="partner_login.html">here</a> to login if you already have an account</h3>
-                    <h2 class="text-white">Get Involved As an Organisation</h2>
-                    <h3><?php echo "$msg";  ?></h3>
+                    <h2 class="text-white">Get Involved And Partner With Us:</h2>
                 </div>
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <div class="separator line-separator">♦</div>
-                    <form method="post" action="get_involved.php">
-                      <div class="form-group">
-                        <h4>Name of Organisation:</h4>
-                        <input type="text" class="form-control" name="name">
-                      </div>
-                      <div class="form-group">
-                        <h4>Organisation Location:</h4>
-                        <input type="text" class="form-control" name="location">
-                      </div>
-                      <div class="form-group">
-                        <h4>Organisation website (if available):</h4>
-                        <input type="website" class="form-control" name="website">
-                      </div>
-                      <div class="form-group">
-                        <h4>Organisation Email Address:</h4>
-                        <input type="email" class="form-control" name="email">
-                      </div>
-                      <div class="form-group">
-                        <h4>Password:</h4>
-                        <input type="Password" class="form-control" name="Password">
-                      </div>
-                      <div class="form-group">
-                        <h4>Cormfirm Password:</h4>
-                        <input type="Password" class="form-control" name="password1">
-                      </div>
-                      <div class="form-group">
-                          <h4>What Makes You Interested:</h4>
-                          <textarea class="form-control" name="interest" rows="10"></textarea>
-                      </div>
-                      <div class="button-get-started">
-                        <button  class="btn btn-danger btn-fill btn-lg" type="submit" name="submit">Submit</button>
-                    </div>
+                    <form action="get_involved.php" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h4>Get Involved as:</h4>
+                            <select class="form-control" required="" name="role">
+                                <option>Orgainisation</option>
+                                <option>Individual</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Name of organisation/Individual:</h4>
+                            <input type="text" class="form-control" name="name" required="">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Email</h4>
+                            <input type="email" class="form-control" name="email" required="">
+                        </div>
+                        
+                        <div class="form-group">
+                            <h4>Location</h4>
+                            <input type="text" class="form-control" name="location" required="">
+                        </div>
+                           
+                        <div class="form-group">
+                            <h4>Website (if available):</h4>
+                            <input type="text" class="form-control" name="website" >
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Password</h4>
+                            <input type="password" class="form-control" name="password" required="">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>profile Pic/Organisation Logo:</h4>
+                            <input type="file" class="form-control" name="passport" required="
+                            ">
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Interested In:</h4>
+                            <select class="form-control" required="" name="interest">
+                                <option>Domestic Violence</option>
+                                <option>Sexual assault</option>
+                            </select>
+                        </div>
+
+                        <!-- make reason drop down -->
+                         <div class="form-group">
+                            <h4>Tell Us More About Yourself:</h4>
+                            <!-- <input type="text" class="form-control" name="reason"> -->
+                            <textarea class="form-control" name="aboutme" rows="5" required="" ></textarea>
+                        </div>
+
+                       
+
+                        <div class='col'>
+                            <button type='submit' name='OrganisationSubmit' class ='btn button-get-started'>Submit Form</button>
+                        </div>
+
                     </form>
                 </div>
                 </div>
             </div>
-        </div>
-
-        <div class="section section-our-team-freebie">
-        <div class="parallax filter">
-            <div class="image"
-                style="background-image: url('assets/img/invovle.jpg')">
-            </div>
-            <div class="container">
-                <div class="title-area">
-                    <h2 class="text-white">Get Involved As an Individual</h2>
-                    <h3><?php echo "$msg";  ?></h3>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <div class="separator line-separator">♦</div>
-                    <form method="post" action="get_involved.php">
-                      <div class="form-group">
-                        <h4>First Name:</h4>
-                        <input type="text" class="form-control" name="first_name">
-                      </div>
-                      <div class="form-group">
-                        <h4>Last Name:</h4>
-                        <input type="text" class="form-control" name="last_name">
-                      </div>
-                      <div class="form-group">
-                        <h4>Email Address:</h4>
-                        <input type="email" class="form-control" name="email">
-                      </div>
-                       <div class="form-group">
-                        <h4>Password:</h4>
-                        <input type="Password" class="form-control" name="Password">
-                      </div>
-                      <div class="form-group">
-                        <h4>Cormfirm Password:</h4>
-                        <input type="Password" class="form-control" name="password1">
-                      </div>
-                      <div class="form-group">
-                        <h4>Location:</h4>
-                        <input type="text" class="form-control" name="location">
-                      </div>
-                      <div class="form-group">
-                          <h4>What Makes You Interested:</h4>
-                          <textarea class="form-control" name="interest" rows="10"></textarea>
-                      </div>
-                      <div class="button-get-started">
-                        <button class="btn btn-danger btn-fill btn-lg" type="submit" name="submit1">Submit</button>
-                    </div>
-                    </form>
-                </div>
-
-                </div>
-            </div>
-        </div>
         </div>
 
     <footer class="footer footer-big footer-color-black" data-color="black">
