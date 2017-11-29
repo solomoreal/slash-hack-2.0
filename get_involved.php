@@ -154,7 +154,7 @@
                             <h4>Email</h4>
                             <input type="email" class="form-control" name="email" required="">
                         </div>
-
+                        
                         <div class="form-group">
                             <h4>Location</h4>
                             <input type="text" class="form-control" name="location" required="">

@@ -108,7 +108,7 @@
             </div>
             <div class="container">
                 <div class="content">
-                   <?php echo "we ll fetch the images and testimonies from the database and and dynamically generate the dives"  ?> 
+                
                     <div class="team">
                         <div class="row">
                             <div class="col-md-10 col-md-offset-1">
@@ -117,7 +117,7 @@
                                         <div class="card card-member">
                                             <div class="content">
                                                 <div class="avatar avatar-danger">
-                                                    <img alt="..." class="img-circle" src="assets/img/faces/face_1.jpg"/>
+                                                    <img alt="..." class="img-circle" src="image/logo/?>"/>
                                                 </div>
                               
                                                 <div class="description">

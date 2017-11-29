@@ -2,7 +2,8 @@
  include_once 'include/session.php';
     include_once 'include/partner.php';
 if(!($session->is_logged_in())) redirect('login.php');
-$partner = Partner::instantiate($_POST);
+$partner = Partner::find($session->user_id);
+
 
 ?>
 
@@ -14,7 +15,7 @@ $partner = Partner::instantiate($_POST);
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>dashboard</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -192,12 +193,6 @@ $partner = Partner::instantiate($_POST);
                             <div class="content">
                                 <form>
                                     <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>Company </label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Creative Code Inc.">
-                                            </div>
-                                        </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
@@ -215,7 +210,7 @@ $partner = Partner::instantiate($_POST);
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>First Name</label>
+                                                <label>Name</label>
                                                 <input type="text" class="form-control"  placeholder="Company" value="<?php echo $partner->name;?>">
                                             </div>
                                         </div>
@@ -234,7 +229,7 @@ $partner = Partner::instantiate($_POST);
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>About Me</label>
-                                                <textarea rows="5" class="form-control"  placeholder="Here can be your description" value="<?php echo $partner->interest;?>">I am willing to stand up for the little and vulnerable people.</textarea>
+                                                <textarea rows="5" class="form-control"  placeholder="Here can be your description" value="<?php echo $partner->aboutme;?>">I am willing to stand up for the little and vulnerable people.</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -246,26 +241,25 @@ $partner = Partner::instantiate($_POST);
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card card-user"  style="padding-top: 200px;">
-                            <div class="image" ">
-                                <img src="image/empty_profile.png" alt="..." >
+                        <div class="card card-user">
+                            <div class="image" >
+                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..." >
                             </div>
                             <div class="content">
                                 <div class="author">
-                                     <a href="#">
-                                    <img class="avatar border-gray" src="image/logo/<?php echo $partner->passport;?>"  alt="..."/>
-                                        <div>
-                                      <input type="text" value="<?php echo $partner->name;?>">
-                                         <input type="text" value="<?php echo $partner->name;?>">
-                                    </div>
-                                    
+                                     <a href="<?php echo $partner->website;?>">
+                                    <img class="avatar border-gray img-responsive" src="image/logo/<?php echo $partner->passport;?>"  height=""  alt="...."/>
+
+                                     <h4 class="title"><?php echo $partner->name?><br />
+                                         <small><?php echo $partner->website?></small>
+                                         <small> <?php echo $partner->location;?> </small>
+                                      </h4>  
                                     </a>
                                 </div>
                                 <div>
-                                <input type="text" class="description text-center" value="<?php echo $partner->location;?>"> <br>
-                                               <p>     Your chick she so thirsty <br>
-                                                    I'm in that two seat Lambo"
-                                </p>
+                                <p> Thanks   <?php echo $partner->username;?> .<br> for joining to save the world from the act of <br> assualt.<br> a big thanks to you, we appreciate.</p>
+                                             
+                                </div>
                             </div>
                             <hr>
                             <div class="text-center">
