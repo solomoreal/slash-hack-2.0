@@ -1,4 +1,24 @@
 <?php
+<<<<<<< HEAD:user.php
+    include_once 'include/session.php';
+    include_once 'include/individual.php'; 
+    include_once 'include/organisation.php';
+    include_once ('include/function.php'); 
+
+    if(!$session->is_logged_in()) redirect('index.php');
+    $indiv = new Individual();
+    if(isset($_GET['id'])){
+    $indiv = Individual::find($_GET['id']);
+     }
+    if(isset($_POST['submit'])){
+    $indiv = Individual::instantiate($_POST);
+    if(Individual::find($indiv->indiv_id)) {
+      ($indiv->update()) ? $msg = 'Successful': $msg = 'Failed';
+      
+    } 
+  }
+ ?>
+=======
  include_once 'include/session.php';
     include_once 'include/partner.php';
 if(!($session->is_logged_in())) redirect('login.php');
@@ -8,16 +28,21 @@ $partner = Partner::find($session->user_id);
 ?>
 
 
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+<<<<<<< HEAD:user.php
+    <title>Light Bootstrap Dashboard by Creative Tim</title>
+=======
 	<title>dashboard</title>
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
 
@@ -32,7 +57,7 @@ $partner = Partner::find($session->user_id);
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
+    <!-- <link href="assets/css/demo.css" rel="stylesheet" /> -->
 
 
     <!--     Fonts and icons     -->
@@ -48,7 +73,7 @@ $partner = Partner::find($session->user_id);
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
 
-    	<div class="sidebar-wrapper">
+        <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="index.html" class="simple-text">
                     SiteName
@@ -98,18 +123,18 @@ $partner = Partner::find($session->user_id);
                         <p>Notifications</p>
                     </a>
                 </li>
-				<li class="active-pro">
+                <li class="active-pro">
                     <a href="upgrade.html">
                         <i class="pe-7s-rocket"></i>
                         <p>Upgrade to PRO</p>
                     </a>
                 </li> -->
             </ul>
-    	</div>
+        </div>
     </div>
 
     <div class="main-panel">
-		<nav class="navbar navbar-default navbar-fixed">
+        <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -125,7 +150,7 @@ $partner = Partner::find($session->user_id);
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
+                                <p class="hidden-lg hidden-md">Dashboard</p>
                             </a>
                         </li>
                         <!-- <li class="dropdown">
@@ -133,10 +158,10 @@ $partner = Partner::find($session->user_id);
                                     <i class="fa fa-globe"></i>
                                     <b class="caret hidden-sm hidden-xs"></b>
                                     <span class="notification hidden-sm hidden-xs">5</span>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
+                                    <p class="hidden-lg hidden-md">
+                                        5 Notifications
+                                        <b class="caret"></b>
+                                    </p>
                               </a>
                               <ul class="dropdown-menu">
                                 <li><a href="#">Notification 1</a></li>
@@ -149,7 +174,7 @@ $partner = Partner::find($session->user_id);
                         <li>
                            <a href="">
                                 <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
+                                <p class="hidden-lg hidden-md">Search</p>
                             </a>
                         </li>
                     </ul>
@@ -175,7 +200,7 @@ $partner = Partner::find($session->user_id);
                                 <p>Log out</p>
                             </a>
                         </li>
-						<li class="separator hidden-lg hidden-md"></li>
+                        <li class="separator hidden-lg hidden-md"></li>
                     </ul>
                 </div>
             </div>
@@ -193,16 +218,33 @@ $partner = Partner::find($session->user_id);
                             <div class="content">
                                 <form>
                                     <div class="row">
+<<<<<<< HEAD:user.php
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Company </label>
+                                                <input type="text" class="form-control" name='company' value='<?php echo $indiv->company;?>'>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Username</label>
+                                                <input type="text" class="form-control"  placeholder="Username" value='<?php echo $indiv->username;?>'>
+=======
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
                                                 <input type="text" class="form-control"  placeholder="Username" value="<?php echo $partner->username;?>">
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
+<<<<<<< HEAD:user.php
+                                                <input type="email" class="form-control"  placeholder="Email" value='<?php echo $indiv->email;?>'>
+=======
                                                 <input type="email" class="form-control"  placeholder="Email" value="<?php echo $partner->email ;?>">
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
                                             </div>
                                         </div>
                                     </div>
@@ -210,8 +252,19 @@ $partner = Partner::find($session->user_id);
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
+<<<<<<< HEAD:user.php
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control"  placeholder="Company" value='<?php echo $indiv->firstname;?>'>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control"  placeholder="Last Name" value='<?php echo $indiv->lastname;?>'>
+=======
                                                 <label>Name</label>
                                                 <input type="text" class="form-control"  placeholder="Company" value="<?php echo $partner->name;?>">
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
                                             </div>
                                         </div>
                                     </div>
@@ -220,7 +273,32 @@ $partner = Partner::find($session->user_id);
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address</label>
+<<<<<<< HEAD:user.php
+                                                <input type="text" class="form-control"  placeholder="Home Address" value='<?php echo $indiv->address;?>'>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>City</label>
+                                                <input type="text" class="form-control"  placeholder="City" value='<?php echo $indiv->city;?>'>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Country</label>
+                                                <input type="text" class="form-control"  placeholder="Country" value='<?php echo $indiv->country;?>'>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Phone</label>
+                                                <input type="number" class="form-control"  placeholder="Phone" value='<?php echo $indiv->country;?>'>
+=======
                                                 <input type="text" class="form-control"  placeholder="Home Address" value="<?php echo $partner->location;?>">
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
                                             </div>
                                         </div>
                                     </div>
@@ -316,10 +394,10 @@ $partner = Partner::find($session->user_id);
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
+    <!--  Charts Plugin -->
+    <script src="assets/js/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
@@ -328,9 +406,10 @@ $partner = Partner::find($session->user_id);
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+
+    <!-- <script src="assets/js/demo.js"></script> -->
 
 </html>
