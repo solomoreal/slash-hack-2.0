@@ -1,8 +1,7 @@
 <?php
     include_once 'include/session.php';
-    include_once 'include/organisation.php';
-    include_once 'include/individual.php';
-   // if(!($session->is_logged_in())) redirect('login.php');
+    include_once 'include/partner.php';
+ if(!($session->is_logged_in())) redirect('login.php');
 
 
 

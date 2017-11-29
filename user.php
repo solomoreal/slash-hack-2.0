@@ -1,3 +1,12 @@
+<?php
+ include_once 'include/session.php';
+    include_once 'include/partner.php';
+if(!($session->is_logged_in())) redirect('login.php');
+$partner = Partner::instantiate($_POST);
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -161,7 +170,7 @@
                               </ul>
                         </li>
                         <li>
-                            <a href="partner_login.html ">
+                            <a href="partner_login.php ">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -192,13 +201,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control"  placeholder="Username" value="<?php echo $user_id->first_name;?>">
+                                                <input type="text" class="form-control"  placeholder="Username" value="<?php echo $partner->username;?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control"  placeholder="Email" value="<?php echo $user_id->email ;?>">
+                                                <input type="email" class="form-control"  placeholder="Email" value="<?php echo $partner->email ;?>">
                                             </div>
                                         </div>
                                     </div>
@@ -207,13 +216,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control"  placeholder="Company" value="<?php echo $user_id->first_name;?>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control"  placeholder="Last Name" value="<?php echo $user_id->last_name;?>">
+                                                <input type="text" class="form-control"  placeholder="Company" value="<?php echo $partner->name;?>">
                                             </div>
                                         </div>
                                     </div>
@@ -222,31 +225,16 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control"  placeholder="Home Address" value="<?php echo $user_id->address;?>">
+                                                <input type="text" class="form-control"  placeholder="Home Address" value="<?php echo $partner->location;?>">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control"  placeholder="City" value="<?php echo $user_id->city;?>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control"  placeholder="Country" value="<?php echo $user_id->country;?>">
-                                            </div>
-                                        </div>
-                                     </div>
-
-                                    <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>About Me</label>
-                                                <textarea rows="5" class="form-control"  placeholder="Here can be your description" value="<?php echo $user_id->intrest;?>">I am willing to stand up for the little and vulnerable people.</textarea>
+                                                <textarea rows="5" class="form-control"  placeholder="Here can be your description" value="<?php echo $partner->interest;?>">I am willing to stand up for the little and vulnerable people.</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -258,22 +246,24 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card card-user">
-                            <div class="image">
-                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                        <div class="card card-user"  style="padding-top: 200px;">
+                            <div class="image" ">
+                                <img src="image/empty_profile.png" alt="..." >
                             </div>
                             <div class="content">
                                 <div class="author">
                                      <a href="#">
-                                    <img class="avatar border-gray" src="image/logo/<?php echo $user_id->logo;?>"  alt="..."/>
-
-                                      <h4 class="title">Mike Andrew<br />
-                                         <small>michael24</small>
-                                      </h4>
+                                    <img class="avatar border-gray" src="image/logo/<?php echo $partner->passport;?>"  alt="..."/>
+                                        <div>
+                                      <input type="text" value="<?php echo $partner->name;?>">
+                                         <input type="text" value="<?php echo $partner->name;?>">
+                                    </div>
+                                    
                                     </a>
                                 </div>
-                                <p class="description text-center"> "Lamborghini Mercy <br>
-                                                    Your chick she so thirsty <br>
+                                <div>
+                                <input type="text" class="description text-center" value="<?php echo $partner->location;?>"> <br>
+                                               <p>     Your chick she so thirsty <br>
                                                     I'm in that two seat Lambo"
                                 </p>
                             </div>

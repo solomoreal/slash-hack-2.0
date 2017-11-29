@@ -24,7 +24,7 @@
 			
 			public function login($user){
 				if ($user) {
-					$this->user_id = $_SESSION['user_id'] = $user->getStaffId();
+					$this->user_id = $_SESSION['user_id'] = $user->getPartnerid();
 					$this->logged_in = true;
 				}
 			}

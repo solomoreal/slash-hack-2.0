@@ -8,7 +8,6 @@
       $msg = '';
       if(isset($_POST['OrganisationSubmit'])){
         $partner = Partner::instantiate($_POST);
-        var_dump($partner);
         if($partner){
 
             $partner->attach_file($_FILES['passport']);
@@ -79,7 +78,7 @@
                     </li>
                     
                     <li>
-                        <a href="report.html" id="menu" >Make A Report</a>
+                        <a href="report.php" id="menu" >Make A Report</a>
                     </li>
 
                    <li>
