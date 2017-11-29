@@ -1,3 +1,36 @@
+
+<?php 
+  include_once 'include/partner.php';
+  include_once 'include/function.php';
+  include_once 'include/session.php';
+
+  $msg = '';
+  
+  if(isset($_POST['login'])){
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    
+ $partner = Partner::authenticate($password, $email);
+    if($partner)
+    {
+                 $session->login($partner); 
+                // $msg = 'login Successful.';
+                 header("location: dashboard.php");
+    
+             }
+      else{
+        $msg =  "<div class='alert alert-danger alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong> Login Failed!</strong></h4>
+                <p class='text-center'>Something went wrong, check your inputs and try again.</p>
+                </div>";
+        }
+    }
+  
+    
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +75,7 @@
                     </li>
                     
                     <li>
-                        <a href="report.html" id="menu" >Make A Report</a>
+                        <a href="report.php" id="menu" >Make A Report</a>
                     </li>
 
                    <li>
@@ -67,7 +100,7 @@
                         <div class="separator line-separator">♦</div>
                         <h4>please fill the login form to see latest reports in your dashboard</h4>
                         <div class="separator line-separator">♦</div>
-                        <form method="post" action="partner_login.html">
+                        <form method="post" action="partner_login.php">
                       <div class="form-group">
                         <h4>email:</h4>
                         <input type="email" class="form-control" name="email">
@@ -77,7 +110,7 @@
                         <input type="password" class="form-control" name="password">
                       </div>
                       <div class="button-get-started">
-                        <a href="#" class="btn btn-danger btn-fill btn-lg" type="submit" name="login">login</a>
+                        <input value="login" class="btn btn-danger btn-fill btn-lg" type="submit" name="login">
                     </div>
                     </form>
                     </div>

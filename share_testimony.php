@@ -1,3 +1,32 @@
+<?php
+    include_once 'include/testimony.php';
+    $result = '';
+    if (isset($_POST['click'])){
+    
+        $testimony = Testimony::instantiate($_POST);
+          if($testimony){
+                $testimony->attach_file($_FILES['passport']);
+
+                if ($testimony->save_with_file()){
+                   $result = "<div class='alert alert-success alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Testimony Submitted Successfully</strong></h4>
+                <p class='text-center'>Thank you for Sharing your Testimony with Us.</p>
+                </div>";
+                }else {
+                  $result = "<div class='alert alert-danger alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Oops.. Something went Wrong.</strong></h4>
+                <p class='text-center'>Please check your Inputs and try again.</p>
+                </div>";
+                }
+            
+    }
+   } 
+?>
+
+    
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,14 +89,21 @@
             <div class="image"
                 style="background-image: url('assets/img/report.jpg')">
             </div>
+
             <div class="container">
                 <div class="content">
+
+                    <?php 
+                        echo "$result";
+                    ?>
+
                     <div class="title-area">
                         <h1 class="title-modern">Tell Your Testimony</h1>
                         <div class="separator line-separator">♦</div>
                         <h3>Testimony is a story been told to people about the success gained after undergoing a therapy or medical care gotten from our partners.</h2>
                         <div class="separator line-separator">♦</div>
                     </div>
+                   
                 </div>
 
             </div>
@@ -87,6 +123,7 @@
         </div>
     </div>
 
+
     <div class="section section-our-team-freebie">
         <div class="parallax filter">
             <div class="image"
@@ -99,51 +136,52 @@
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Please leave this section blank if you do not wish to be contacted</h3>
                     <div class="separator line-separator">♦</div>
-                    <form>
-                      <div class="form-group">
-                        <h4>Phone Number:</h4>
-                        <input type="phone" class="form-control" name="phone">
+                    <form action="share_testimony.php" method="post" enctype="multipart/form-data">
+                        <div class="form-group ">
+                             <h4>Passport</h4>
+                             <input class="form-control" type="file" name="passport"  required="">
                       </div>
+                      <div class="form-group">
+                            <h4>Phone Number:</h4>
+                            <input type="phone" class="form-control" name="phone" required="">
+                        </div>
                       <div class="form-group">
                         <h4>Email:</h4>
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" name="email" required="">
+                       
                       </div>
-                    </form>
                 </div>
 
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Testimony teller Information</h3>
                     <div class="separator line-separator">♦</div>
-                    <form>
                       <div class="form-group">
                         <h4>First Name:</h4>
-                        <input type="text" class="form-control" name="first_name">
+                        <input type="text" class="form-control" name="first_name" required="">
                       </div>
                       <div class="form-group">
                         <h4>Last Name(Optional):</h4>
                         <input type="text" class="form-control" name="last_name">
-                      </div>
-                    </form>
+                      </div>            
                 </div>              
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>write the Testimonial story:</h3>
                     <div class="separator line-separator">♦</div>
-                    <form>
+
                       <div class="form-group">
-                        <h4>Don't leave any stone unturned, give a guine story. </h4>
-                        <textarea class="form-control">
-                        story in details
-                            
-                        </textarea>
-                      </div>
-                    </form>
+                        <h4>Don't leave any stone unturned.</h4>
+                        <textarea class="form-control" rows="7" maxlength="100" name="testimony" required="">                        
+                       </textarea>
+                        </div>
+                    
 
                     <div class="button-get-started">
-                        <a href="#" class="btn btn-danger btn-fill btn-lg">Share Testimony</a>
+                         <input class="btn btn-danger btn-fill btn-lg " role="button" name="click" type="submit" aria-pressed="true">
                     </div>
-                 </div>
-            </div>
-        </div>
+                  </form>  
+                </div>
+
+          </div>
      </div>   
 
     <footer class="footer footer-big footer-color-black" data-color="black">

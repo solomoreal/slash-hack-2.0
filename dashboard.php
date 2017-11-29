@@ -1,3 +1,17 @@
+<?php
+    include_once 'include/session.php';
+    include_once 'include/partner.php';
+if(!($session->is_logged_in())) redirect('login.php');
+$partner = Partner::find($session->user_id);
+
+
+
+
+
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,7 +19,11 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+<<<<<<< HEAD:dashboard.php
     <title>Light Bootstrap Dashboard by Creative Tim</title>
+=======
+	<title>dashboard</title>
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:dashboard.php
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -47,19 +65,23 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
+<<<<<<< HEAD:dashboard.php
                     <a  href="<?php echo 'user.php?id={$indiv->email}'?>">
+=======
+                    <a href="user.php">
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:dashboard.php
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Table List</p>
                     </a>
@@ -79,7 +101,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Welcome </a>
+                    <a class="navbar-brand" href="#">Welcome  <?php echo $partner->username;?> </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -103,11 +125,11 @@
                                 <li><a href="#">Settings</a></li>
                                 <li><a href="#">Notifications</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">Invite people or organizations</a></li>
+                                <li><a href="http://www.Facebook.com">Invite people or organizations</a></li>
                               </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="partner_login.php">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -128,7 +150,7 @@
 
 
                                   <div class="font-icon-list col-lg-6 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                      <a href="">
+                                      <a href="table.php">
                                         <div class="font-icon-detail"><i class="pe-7s-user"></i>
                                           <input type="text" value="Get in touch with the people affected">
                                         </div>
@@ -136,7 +158,7 @@
                                   </div>
 
                                   <div class="font-icon-list col-lg-6 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                    <a href="">
+                                    <a href="table.php">
                                         <div class="font-icon-detail"><i class="pe-7s-global"></i>
                                           <input type="text" value="Get in touch with the organisations involved">
                                         </div>
@@ -160,9 +182,9 @@
                             <nav>
                                 <ul style="text-align: center;">
                                     <li>
-                                        <a href="#">Home</a></li>
+                                        <a href="index.hml">Home</a></li>
                                     <li>
-                                        <a href="#">About Us</a>
+                                        <a href="aboutus.html">About Us</a>
                                     </li>
                                     <li>
                                         <a href="#">Work place Assualt</a>

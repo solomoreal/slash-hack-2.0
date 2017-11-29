@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>dashboard</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -47,19 +47,19 @@
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="user.php">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="table.html">
+                    <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Table List</p>
                     </a>
@@ -157,11 +157,11 @@
                                 <li><a href="#">Settings</a></li>
                                 <li><a href="#">Notifications</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">Invite people or organizations</a></li>
+                                <li><a href="http://www.facebook.com">Invite people or organizations</a></li>
                               </ul>
                         </li>
                         <li>
-                            <a href="partner_login.html ">
+                            <a href="partner_login.php ">
                                 <p>Log out</p>
                             </a>
                         </li>

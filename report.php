@@ -1,3 +1,31 @@
+<?php 
+    
+    include_once 'include/assault.php';
+    $msg = '';
+    if (isset($_POST['submitReport'])){
+    
+        $report = AssaultReport::instantiate($_POST);
+        // var_dump($reporter);
+          if($report){
+                if ($report->insertNewReport()){
+                   $msg = "<div class='alert alert-success alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Report Sent Successfully.</strong></h4>
+                <p class='text-center'>Thank You For Confiding In Us, We will Keep In Touch With You Through the contact Information You provided In the Form.</p>
+                </div>";
+                }else {
+                  $msg = "<div class='alert alert-danger alert-dismissable'>
+                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
+                <h4 class='text-center'><strong>Oops.. Something went Wrong.</strong></h4>
+                <p class='text-center'>Please check your Inputs and try again.</p>
+                </div>";
+                }
+            
+    }
+   } 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +35,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Share Your Story</title>
+    <title>assault</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
@@ -62,14 +90,11 @@
             </div>
             <div class="container">
                 <div class="content">
+                    <?php echo "$msg"; ?>
                     <div class="title-area">
-<<<<<<< HEAD:share_report.html
-                        <h1 class="title-modern">REPORT </h1>
-=======
-                        <h1 class="title-modern">Share Your Story</h1>
->>>>>>> 995ccdbee4b30ccbdae30a04a3dc86ef1fcdfd18:share_story.html
+                        <h1 class="title-modern">Make A Report</h1>
                         <div class="separator line-separator">♦</div>
-                        <h3>Help Let other Other Individuals Know there are not alone in this by share your past experiences with us and how you were able to overcome it.</h2>
+                        <h3>Reporting a sexual crime is already a daunting task in our today society, so we hope to remove stigmas surrounding sexual assault and other related Violence.</h2>
                         <div class="separator line-separator">♦</div>
                     </div>
                 </div>
@@ -83,10 +108,10 @@
         <div class="container">
             <div class="row"   >
                 <div class="title-area">
-                    <h2>Why You Should Share Your Story.</h2>
+                    <h2>Why You Should Make A Report.</h2>
                     <div class="separator separator-danger">✻</div>
                     <p class="description">The information that will be collected here is used to help enhance understanding of our society climate so that we may strengthen sexual violence response and prevention efforts.
-                    Survivors can also use this form to tell how he/she got support.So that  Survivors who may not initially be inclined to report a sexual assault to the police or to other Law Enforcement have the right to change their mind at any time. The stroy being told by an individual will help someone of similar case to be revived.</p>
+                    Survivors can also use this form to request support. Survivors who may not initially be inclined to report a sexual assault to the police or to other Law Enforcement have the right to change their mind at any time. Information the Individual provides on this reporting form can be used at any time should the survivor so choose.</p>
                 </div>
         </div>
     </div>
@@ -98,91 +123,123 @@
             </div>
             <div class="container">
                 <div class="title-area">
-                    <h2 class="text-white">REPORT Form</h2>
+                    <h2 class="text-white">Report Form</h2>
                 </div>
+            <form action="report.php" method="post">
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <h3>Please leave this section blank if you do not wish to be contacted</h3>
+                    <h3>Reporter's Information (the reporter and survivor can be different People)</h3>
                     <div class="separator line-separator">♦</div>
-                    <form>
                       <div class="form-group">
-                        <h4>Phone Number:</h4>
-                        <input type="phone" class="form-control" name="phone">
+                        <h4>First Name:</h4>
+                        <input type="text" class="form-control" name="reporter_first_name" required="">
+                      </div>
+                      <div class="form-group">
+                        <h4>Last Name(Optional):</h4>
+                        <input type="text" class="form-control" name="reporter_last_name">
                       </div>
                       <div class="form-group">
                         <h4>Email:</h4>
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" name="reporter_email" required="">
                       </div>
-                    </form>
                 </div>
 
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <h3>Your Information</h3>
-                    <div class="separator line-separator">♦</div>
-                    <form>
-                      <div class="form-group">
-                        <h4>First Name:</h4>
-                        <input type="text" class="form-control" name="first_name">
-                      </div>
-                      <div class="form-group">
-                        <h4>Last Name(Optional):</h4>
-                        <input type="text" class="form-control" name="last_name">
-                      </div>
-                    </form>
-<<<<<<< HEAD:share_report.html
-                </div>
-                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Survivor's Information</h3>
                     <div class="separator line-separator">♦</div>
-                    <form>
                       <div class="form-group">
                         <h4>First Name:</h4>
-                        <input type="text" class="form-control" name="first_name">
+                        <input type="text" class="form-control" name="survivor_first_name" required="">
                       </div>
                       <div class="form-group">
                         <h4>Last Name(Optional):</h4>
-                        <input type="text" class="form-control" name="last_name">
+                        <input type="text" class="form-control" name="survivor_last_name">
                       </div>
                       <div class="form-group">
                         <h4>Survivor's Gender:<h4><br>
-                        <label class="radio-inline"><input type="radio" name="sex">Male</label>
-                        <label class="radio-inline"><input type="radio" name="sex">Female</label>
+                        <label class="radio-inline"><input type="radio" name="survivor_gender" value="Male">Male</label>
+                        <label class="radio-inline"><input type="radio" name="survivor_gender" value="Female">Female</label>
                       </div>
-                    </form>
                 </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-         
-              
-
-                </div>              
 
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
-                    <h3>Tell Your Story:</h3>
+                    <h3>Offender(s) Information</h3>
                     <div class="separator line-separator">♦</div>
-                    <form>
                       <div class="form-group">
-
-                        <h4>make sure the story guine. </h4>
-                        <textarea class="form-control">
-                        story in details
-                            
-
-                        <h4>Don't Leave Any Stone Unturned:</h4>
-                        <textarea class="form-control" rows="25">
-
-                        </textarea>
+                        <h4>Number Of Offender(s):</h4>
+                        <input type="text" class="form-control" name="num_offenders">
                       </div>
-                    </form>
+                      <div class="form-group">
+                        <h4>Names of Offender(s) (if Known):</h4>
+                        <input type="text" class="form-control" name="name_offenders">
+                      </div>
+                      <div class="form-group">
+                        <h4>Gender(s) of Offender(s):</h4><br>
+                        <label class="radio-inline"><input type="radio" name="gender_offenders" value="Male">Male</label><br>
+                        <label class="radio-inline"><input type="radio" name="gender_offenders" value="Female">Female</label><br>
+                        <label class="radio-inline"><input type="radio" name="gender_offenders" value="Multiple Males">Multiple Males</label><br>
+                        <label class="radio-inline"><input type="radio" name="gender_offenders" value="Multiple Females">Multiple Females</label><br>
+                        <label class="radio-inline"><input type="radio" name="gender_offenders" value="Males and Females">Males and Females</label><br>
+                        <label class="radio-inline"><input type="radio" name="gender_offenders" value="Unknown">Unknown</label>
+                      </div>
+                      <div class="form-group">
+                        <h4>Offender(s) Relationship to Survivor:</h4>
+                        <label class="radio-inline"><input type="radio" name="relationship" value="Partner,Girlfriend, or Boyfriend">Partner,Girlfriend, or Boyfriend</label><br>
+                        <label class="radio-inline"><input type="radio" name="relationship" value="Friend">Friend</label><br>
+                        <label class="radio-inline"><input type="radio" name="relationship" value="Ex-Partner,Ex-Girlfriend, or Ex-Boyfriend">Ex-Partner,Ex-Girlfriend, or Ex-Boyfriend</label><br>
+                        <label class="radio-inline"><input type="radio" name="relationship" value="Colleague or co-worker">Colleague or co-worker</label><br>
+                        <label class="radio-inline"><input type="radio" name="relationship" value="Acquaintance">Acquaintance</label><br>
+                        <label class="radio-inline"><input type="radio" name="relationship" value="Stranger">Stranger</label>
+                      </div>
+                </div>
+
+                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
+                    <h3>Assault Information</h3>
+                    <div class="separator line-separator">♦</div>
+                      <div class="form-group">
+                        <h4>Date of Assault:</h4>
+                        <input type="date" class="form-control" name="date_of_assault">
+                      </div>
+                      <div class="form-group">
+                        <h4>Time of Assault:</h4>
+                        <input type="time" class="form-control" name="time_of_assault">
+                      </div>
+                      <div class="form-group">
+                        <h4>Location Of Assault:</h4>
+                        <input type="text" class="form-control" name="location_assault">
+                      </div>
+                      <div class="form-group">
+                        <h4>Reported Assault (Check all that Apply):</h4>
+                        <label class="checkbox"><input type="checkbox" name="assault_type" value="Attempted Sexual Assault/Misconduct/Harassment">Attempted Sexual Assault/Misconduct/Harassment</label>
+                        <label class="checkbox"><input type="checkbox" name="assault_type" value="Completed Sexual Assault/Misconduct/Harassment">Completed Sexual Assault/Misconduct/Harassment</label>
+                        <label class="checkbox"><input type="checkbox" name="assault_type" value="Attempted Domestic Violence">Attempted Domestic Violence</label>
+                        <label class="checkbox"><input type="checkbox" name="assault_type" value="Completed Domestic Violence">Completed Domestic Violence</label>
+                      </div>
+                      <div class="form-group">
+                        <h4>Was the Survivor given Alcohol and/or other drugs without consent or Knowledge? (check all that apply):</h4>
+                        <label class="checkbox"><input type="checkbox" name="influence" value="Yes, alcohol">Yes, alcohol</label>
+                        <label class="checkbox"><input type="checkbox" name="influence" value="Yes, Drugs">Yes, Drugs</label>
+                        <label class="checkbox"><input type="checkbox" name="influence" value="No">No</label>
+                        <label class="checkbox"><input type="checkbox" name="influence" value="Unknown">Unknown</label>
+                      </div>                                           
+                </div>
+
+                <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
+                    <h3>Description of the Incident:</h3>
+                    <div class="separator line-separator">♦</div>
+                      <div class="form-group">
+                        <h4>If you wish, write a description of the incident and attach to this form:</h4>
+                        <textarea class="form-control" rows="10" name="assault_desc"></textarea>
+                      </div>
 
                     <div class="button-get-started">
-
-                        <a href="#" class="btn btn-danger btn-fill btn-lg">REPORT</a>
-
-                        <a href="#" class="btn btn-danger btn-fill btn-lg">Share Story</a>
+                         <input class="btn btn-danger btn-fill btn-lg " role="button" name="submitReport" type="submit" value="SUBMIT REPORT" aria-pressed="true">
                     </div>
-                 </div>
+
+                </div>
+            </form>
             </div>
         </div>
-     </div>   
+        </div>
 
     <footer class="footer footer-big footer-color-black" data-color="black">
         <div class="container">
@@ -198,7 +255,7 @@
                                     <a href="#">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="#">Work place Assualt</a>
+                                    <a href="#">Work placr Assualt</a>
                                 </li>
                                 <li>
                                     <a href="#">Domestic Assualt</a>

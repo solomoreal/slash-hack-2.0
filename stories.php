@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
-/** 
+include_once 'include/story.php';
  $msg = '';
-  if (isset($_GET['id']) {
-    $testimony = Testimony::find($_GET['id']);
+  if (isset($_GET['id'])) {
+    $story = Story::find($_GET['id']);
     
   }
   
-    $testimony = Testimony::all();
+    $story = Story::all();
 
-  */
- ?>
+?>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -19,7 +24,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Testimonies</title>
+    <title>Stories</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
@@ -98,36 +103,43 @@
         </div>
     </div>
 
-
-    <div class="section">
-        <div class="container">
-            <div class="row"   >
-                    <div class="section section-our-team-freebie">
-        <div class="parallax filter filter-color-black">
-            <div class="image" style="background-image:url('assets/img/header-2.jpeg')">
+ <?php
+                                         $model ='';
+                if ($story){
+                    foreach ($story as $story) {
+                        # code...
+                        $model.= "
+    <div class='section'>
+        <div class='container'>
+            <div class='row'   >
+                    <div class='section section-our-team-freebie'>
+        <div class='parallax filter filter-color-black'>
+            <div class='image' style='background-image:url('assets/img/header-2.jpeg')''>
             </div>
-            <div class="container">
-                <div class="content">
-                   <?php echo "we ll fetch the images and testimonies from the database and and dynamically generate the dives"  ?> 
-                    <div class="team">
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <div class="card card-member">
-                                            <div class="content">
-                                                <div class="avatar avatar-danger">
-                                                    <img alt="..." class="img-circle" src="assets/img/faces/face_1.jpg"/>
+            <div class='container'>
+                <div class='content'>
+                
+                    <div class='team'>
+                        <div class='row'>
+                            <div class='col-md-10 col-md-offset-1'>
+                                <div class='row'>
+                                    <div class='col-md-10 col-md-offset-1'>
+             
+                                        <div class='card card-member'>
+                                            <div class='content'>
+                                                <div class='avatar avatar-danger'>
+                                                    <img alt='...' class='img-circle' src='image/story/$story->passport'/>
                                                 </div>
                               
-                                                <div class="description">
-                                                    <h3 class="title">Tina</h3>
-                                                    <p class="small-text">CEO / Co-Founder</p>
-                                                    <p class="description">I miss the old Kanye I gotta say at that time I’d like to meet Kanye And I promise the power is in the people and I will use the power given by the people to bring everything I have back to the people.</p>
+                                                <div class='description'>
+                                                    <h3 class='title'> $story->first_name</h3>
+                                                    <p class='small-text'>$story->last_name</p>
+                                                    <p class='description'> $story->story.</p>
                                                     
                                                 </div>
                                             </div>
                                         </div>
+                           
                                     </div>
                                     
                                 </div>
@@ -141,7 +153,17 @@
 
                 </div>
             </div>
-        </div>
+        </div>";
+
+                    }
+echo $model;
+                        }
+ ?>                
+
+
+
+
+
 
     <footer class="footer footer-big footer-color-black" data-color="black">
         <div class="container">

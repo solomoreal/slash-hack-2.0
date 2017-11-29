@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD:user.php
     include_once 'include/session.php';
     include_once 'include/individual.php'; 
     include_once 'include/organisation.php';
@@ -17,6 +18,17 @@
     } 
   }
  ?>
+=======
+ include_once 'include/session.php';
+    include_once 'include/partner.php';
+if(!($session->is_logged_in())) redirect('login.php');
+$partner = Partner::find($session->user_id);
+
+
+?>
+
+
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,7 +36,11 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+<<<<<<< HEAD:user.php
     <title>Light Bootstrap Dashboard by Creative Tim</title>
+=======
+	<title>dashboard</title>
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -66,19 +82,19 @@
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="user.html">
+                    <a href="user.php">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Table List</p>
                     </a>
@@ -180,7 +196,7 @@
                               </ul>
                         </li>
                         <li>
-                            <a href="partner_login.html ">
+                            <a href="partner_login.php ">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -202,6 +218,7 @@
                             <div class="content">
                                 <form>
                                     <div class="row">
+<<<<<<< HEAD:user.php
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Company </label>
@@ -212,12 +229,22 @@
                                             <div class="form-group">
                                                 <label>Username</label>
                                                 <input type="text" class="form-control"  placeholder="Username" value='<?php echo $indiv->username;?>'>
+=======
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Username</label>
+                                                <input type="text" class="form-control"  placeholder="Username" value="<?php echo $partner->username;?>">
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
+<<<<<<< HEAD:user.php
                                                 <input type="email" class="form-control"  placeholder="Email" value='<?php echo $indiv->email;?>'>
+=======
+                                                <input type="email" class="form-control"  placeholder="Email" value="<?php echo $partner->email ;?>">
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
                                             </div>
                                         </div>
                                     </div>
@@ -225,6 +252,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
+<<<<<<< HEAD:user.php
                                                 <label>First Name</label>
                                                 <input type="text" class="form-control"  placeholder="Company" value='<?php echo $indiv->firstname;?>'>
                                             </div>
@@ -233,6 +261,10 @@
                                             <div class="form-group">
                                                 <label>Last Name</label>
                                                 <input type="text" class="form-control"  placeholder="Last Name" value='<?php echo $indiv->lastname;?>'>
+=======
+                                                <label>Name</label>
+                                                <input type="text" class="form-control"  placeholder="Company" value="<?php echo $partner->name;?>">
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
                                             </div>
                                         </div>
                                     </div>
@@ -241,6 +273,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address</label>
+<<<<<<< HEAD:user.php
                                                 <input type="text" class="form-control"  placeholder="Home Address" value='<?php echo $indiv->address;?>'>
                                             </div>
                                         </div>
@@ -263,6 +296,9 @@
                                             <div class="form-group">
                                                 <label>Phone</label>
                                                 <input type="number" class="form-control"  placeholder="Phone" value='<?php echo $indiv->country;?>'>
+=======
+                                                <input type="text" class="form-control"  placeholder="Home Address" value="<?php echo $partner->location;?>">
+>>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:user.php
                                             </div>
                                         </div>
                                     </div>
@@ -271,7 +307,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>About Me</label>
-                                                <textarea rows="5" class="form-control"  placeholder="Here can be your description" value="Mike">I am willing to stand up for the little and vulnerable people.</textarea>
+                                                <textarea rows="5" class="form-control"  placeholder="Here can be your description" value="<?php echo $partner->aboutme;?>">I am willing to stand up for the little and vulnerable people.</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -284,23 +320,24 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card card-user">
-                            <div class="image">
-                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                            <div class="image" >
+                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..." >
                             </div>
                             <div class="content">
                                 <div class="author">
-                                     <a href="#">
-                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
+                                     <a href="<?php echo $partner->website;?>">
+                                    <img class="avatar border-gray img-responsive" src="image/logo/<?php echo $partner->passport;?>"  height=""  alt="...."/>
 
-                                      <h4 class="title">Mike Andrew<br />
-                                         <small>michael24</small>
-                                      </h4>
+                                     <h4 class="title"><?php echo $partner->name?><br />
+                                         <small><?php echo $partner->website?></small>
+                                         <small> <?php echo $partner->location;?> </small>
+                                      </h4>  
                                     </a>
                                 </div>
-                                <p class="description text-center"> "Lamborghini Mercy <br>
-                                                    Your chick she so thirsty <br>
-                                                    I'm in that two seat Lambo"
-                                </p>
+                                <div>
+                                <p> Thanks   <?php echo $partner->username;?> .<br> for joining to save the world from the act of <br> assualt.<br> a big thanks to you, we appreciate.</p>
+                                             
+                                </div>
                             </div>
                             <hr>
                             <div class="text-center">

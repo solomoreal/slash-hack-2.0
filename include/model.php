@@ -5,6 +5,7 @@ class Model extends MyPDO{
 	protected static $class_name;
 	protected static $primary_key;
 	protected static $table_name;
+	protected static $table_name1;
 	protected static $table_fields;
 
 	public function __construct(){
@@ -18,12 +19,12 @@ class Model extends MyPDO{
 		return ($objects) ? $objects : false;
 	}
 
-	public static function last(){
-		$sql = "SELECT * FROM " .static::$table_name. " ORDER BY " .static::$primary_key." DESC LIMIT 1 ";
-		$obj = new static();
-		$objects = $obj->connection->query($sql)->fetchAll(PDO::FETCH_CLASS,static::$class_name);
+	 public static function last(){
+	 	$sql = " SELECT * FROM " .static::$table_name. " ORDER BY " .static::$primary_key." DESC LIMIT 1 ";
+	 	$obj = new static();
+	 	$objects = $obj->connection->query($sql)->fetchAll(PDO::FETCH_CLASS,static::$class_name);
 			
-		return ($objects) ? array_shift($objects) : false;
+	 	return ($objects) ? array_shift($objects) : false;
 
 	}
 	
@@ -75,7 +76,7 @@ class Model extends MyPDO{
 		$sql = "INSERT INTO ".static::$table_name;
 		$sql .= " (" .join(',',$obj_attributes_array_keys).")";
 		$sql .= "VALUES ('" .join("','",$obj_attributes_array)."')";
-		echo $sql;
+		//echo $sql;
 		return ($this->connection->query($sql)) ? true : false;
 	}
 	
