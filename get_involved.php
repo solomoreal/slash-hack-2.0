@@ -1,13 +1,13 @@
 <?php 
 
-    include_once "include/partner.php";
+
+      include_once "include/partner.php";
       include_once ('include/session.php');
       include_once ('include/function.php'); 
       
       $msg = '';
       if(isset($_POST['OrganisationSubmit'])){
         $partner = Partner::instantiate($_POST);
-        var_dump($partner);
         if($partner){
 
             $partner->attach_file($_FILES['passport']);
@@ -78,7 +78,7 @@
                     </li>
                     
                     <li>
-                        <a href="report.html" id="menu" >Make A Report</a>
+                        <a href="report.php" id="menu" >Make A Report</a>
                     </li>
 
                    <li>
@@ -154,7 +154,7 @@
                             <h4>Email</h4>
                             <input type="email" class="form-control" name="email" required="">
                         </div>
-
+                        
                         <div class="form-group">
                             <h4>Location</h4>
                             <input type="text" class="form-control" name="location" required="">
@@ -196,6 +196,7 @@
                         <div class='col'>
                             <button type='submit' name='OrganisationSubmit' class ='btn button-get-started'>Submit Form</button>
                         </div>
+
                     </form>
                 </div>
                 </div>

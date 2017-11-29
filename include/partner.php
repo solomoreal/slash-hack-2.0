@@ -12,12 +12,13 @@
 		public $password;
 		public $passport;
 		public $aboutme;
+		public $username;
 		public $error = array();
 
 		public static $class_name = 'Partner';
 		public static $table_name = 'partners';
 		public static $primary_key = 'partner_id';
-		public static $table_fields = array('partner_id','name','website','email','location','interest','password','passport','role','aboutme');
+		public static $table_fields = array('partner_id','name','website','email','location','interest','password','passport','role','aboutme','username',);
 		function __construct() 
 		{
 			parent::__construct();

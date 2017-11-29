@@ -1,8 +1,8 @@
 <?php
     include_once 'include/session.php';
-    include_once 'include/organisation.php';
-    include_once 'include/individual.php';
-   // if(!($session->is_logged_in())) redirect('login.php');
+    include_once 'include/partner.php';
+if(!($session->is_logged_in())) redirect('login.php');
+$partner = Partner::find($session->user_id);
 
 
 
@@ -19,7 +19,7 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>dashboard</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -93,7 +93,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Welcome </a>
+                    <a class="navbar-brand" href="#">Welcome  <?php echo $partner->username;?> </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -117,11 +117,11 @@
                                 <li><a href="#">Settings</a></li>
                                 <li><a href="#">Notifications</a></li>
                                 <li class="divider"></li>
-                                <li><a href="http//www.Facebook.com">Invite people or organizations</a></li>
+                                <li><a href="http://www.Facebook.com">Invite people or organizations</a></li>
                               </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="partner_login.php">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -142,7 +142,7 @@
 
 
                                   <div class="font-icon-list col-lg-6 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                      <a href="">
+                                      <a href="table.php">
                                         <div class="font-icon-detail"><i class="pe-7s-user"></i>
                                           <input type="text" value="Get in touch with the people affected">
                                         </div>

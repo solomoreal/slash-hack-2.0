@@ -1,6 +1,7 @@
 <?php
 
 include_once 'include/story.php';
+
     $result = '';
     if (isset($_POST['click'])){
         $story = Story::instantiate($_POST);
