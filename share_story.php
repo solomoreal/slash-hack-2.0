@@ -41,7 +41,7 @@ include_once 'include/story.php';
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Share Story</title>
+    <title>assault</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     
@@ -51,6 +51,7 @@ include_once 'include/story.php';
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/gaia.css" rel="stylesheet"/>
     <link href="assets/css/fonts/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
 
 <body>
@@ -65,8 +66,8 @@ include_once 'include/story.php';
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
-                <a href="index.html" class="navbar-brand" id="sitename">
-                    SiteName
+                <a href="index.php" class="navbar-brand active" style="font-size: 1em; font-family: 'Lobster', cursive;" id="Victorious">
+                    Victorious
                 </a>
             </div>
             <div class="collapse navbar-collapse">
@@ -76,11 +77,21 @@ include_once 'include/story.php';
                     </li>
                     
                     <li>
-                        <a href="report.html" id="menu" >Make A Report</a>
+                        <a href="report.php" id="menu" >Make A Report</a>
                     </li>
 
-                   <li>
-                        <a href="get_involved.php" id="menu">Get Involved</a>
+                   <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" id="menu">
+                         Get Involved
+                        </a>
+                        <ul class="dropdown-menu dropdown-danger">
+                            <li>
+                                <a href="get_involved.php"> Sign Up</a>
+                            </li>
+                            <li>
+                                <a href="partner_login.php"> Log In</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -88,11 +99,10 @@ include_once 'include/story.php';
         </div>
     </nav>
 
-
     <div class="section section-header">
         <div class="parallax filter filter-color-black">
             <div class="image"
-                style="background-image: url('assets/img/report.jpg')">
+                style="background-image: url('assets/img/wizard-profile.jpg')">
             </div>
 
             <div class="container">
@@ -132,7 +142,7 @@ include_once 'include/story.php';
     <div class="section section-our-team-freebie">
         <div class="parallax filter">
             <div class="image"
-                style="background-image: url('assets/img/grassland.jpg')">
+                style="background-image: url('assets/img/bokeh-1569531_1920.jpg')">
             </div>
             <div class="container">
                 <div class="title-area">

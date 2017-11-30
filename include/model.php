@@ -19,7 +19,7 @@ class Model extends MyPDO{
 		return ($objects) ? $objects : false;
 	}
 
-	 public static function last(){
+	public static function last(){
 	 	$sql = " SELECT * FROM " .static::$table_name. " ORDER BY " .static::$primary_key." DESC LIMIT 1 ";
 	 	$obj = new static();
 	 	$objects = $obj->connection->query($sql)->fetchAll(PDO::FETCH_CLASS,static::$class_name);
@@ -95,7 +95,14 @@ class Model extends MyPDO{
 
 	}
  	
+	public static function lastThree(){
+	 	$sql = " SELECT * FROM " .static::$table_name. " ORDER BY " .static::$primary_key." DESC LIMIT 3 ";
+	 	$obj = new static();
+	 	$objects = $obj->connection->query($sql)->fetchAll(PDO::FETCH_CLASS,static::$class_name);
+			
+	 	return ($objects) ? $objects : false;
 
+	}
 		
 }
 ?>

@@ -18,12 +18,9 @@ $partner = Partner::find($session->user_id);
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-<<<<<<< HEAD:dashboard.php
     <title>Light Bootstrap Dashboard by Creative Tim</title>
 =======
 	<title>dashboard</title>
->>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:dashboard.php
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -58,7 +55,7 @@ $partner = Partner::find($session->user_id);
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="index.html" class="simple-text">
+                <a href="index.php" class="simple-text">
                     SiteName
                 </a>
             </div>
@@ -71,11 +68,7 @@ $partner = Partner::find($session->user_id);
                     </a>
                 </li>
                 <li>
-<<<<<<< HEAD:dashboard.php
-                    <a  href="<?php echo 'user.php?id={$indiv->email}'?>">
-=======
                     <a href="user.php">
->>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:dashboard.php
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
