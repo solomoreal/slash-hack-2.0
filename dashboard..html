@@ -1,15 +1,3 @@
-<?php
-    include_once 'include/session.php';
-    include_once 'include/partner.php';
-if(!($session->is_logged_in())) redirect('login.php');
-$partner = Partner::find($session->user_id);
-
-
-
-
-
-?>
-
 
 
 <!doctype html>
@@ -18,12 +6,8 @@ $partner = Partner::find($session->user_id);
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-<<<<<<< HEAD:dashboard.php
     <title>Light Bootstrap Dashboard by Creative Tim</title>
-=======
 	<title>dashboard</title>
->>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:dashboard.php
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -65,23 +49,19 @@ $partner = Partner::find($session->user_id);
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.php">
+                    <a href="dashboard.html">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-<<<<<<< HEAD:dashboard.php
-                    <a  href="<?php echo 'user.php?id={$indiv->email}'?>">
-=======
-                    <a href="user.php">
->>>>>>> 8f4fda145295e543dacc894362a106733c24fed6:dashboard.php
+                    <a href="user.html">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.php">
+                    <a href="table.html">
                         <i class="pe-7s-note2"></i>
                         <p>Table List</p>
                     </a>
@@ -101,7 +81,7 @@ $partner = Partner::find($session->user_id);
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Welcome  <?php echo $partner->username;?> </a>
+                    <a class="navbar-brand" href="#">Welcome   </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -129,7 +109,7 @@ $partner = Partner::find($session->user_id);
                               </ul>
                         </li>
                         <li>
-                            <a href="partner_login.php">
+                            <a href="partner_login.html">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -150,7 +130,7 @@ $partner = Partner::find($session->user_id);
 
 
                                   <div class="font-icon-list col-lg-6 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                      <a href="table.php">
+                                      <a href="table.html">
                                         <div class="font-icon-detail"><i class="pe-7s-user"></i>
                                           <input type="text" value="Get in touch with the people affected">
                                         </div>
@@ -158,7 +138,7 @@ $partner = Partner::find($session->user_id);
                                   </div>
 
                                   <div class="font-icon-list col-lg-6 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                    <a href="table.php">
+                                    <a href="table.html">
                                         <div class="font-icon-detail"><i class="pe-7s-global"></i>
                                           <input type="text" value="Get in touch with the organisations involved">
                                         </div>

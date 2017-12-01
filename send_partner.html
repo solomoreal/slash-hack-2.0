@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<<head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
@@ -17,6 +17,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/gaia.css" rel="stylesheet"/>
     <link href="assets/css/fonts/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
 
 <body>
@@ -31,8 +32,8 @@
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
-                <a href="index.html" class="navbar-brand" id="sitename">
-                    SiteName
+                <a href="index.html" class="navbar-brand" style="font-size: 1em; font-family: 'Lobster', cursive;" id="Victorious">
+                    Victorious
                 </a>
             </div>
             <div class="collapse navbar-collapse">
@@ -45,14 +46,25 @@
                         <a href="report.html" id="menu" >Make A Report</a>
                     </li>
 
-                   <li>
-                        <a href="get_involved.php" id="menu">Get Involved</a>
+                   <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" id="menu">
+                         Get Involved
+                        </a>
+                        <ul class="dropdown-menu dropdown-danger">
+                            <li>
+                                <a href="get_involved.html"> Sign Up</a>
+                            </li>
+                            <li>
+                                <a href="partner_login.html"> Log In</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
     </nav>
+
 
 
     <div class="section section-header">

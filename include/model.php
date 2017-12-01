@@ -76,7 +76,7 @@ class Model extends MyPDO{
 		$sql = "INSERT INTO ".static::$table_name;
 		$sql .= " (" .join(',',$obj_attributes_array_keys).")";
 		$sql .= "VALUES ('" .join("','",$obj_attributes_array)."')";
-		//echo $sql;
+		echo $sql;
 		return ($this->connection->query($sql)) ? true : false;
 	}
 	
@@ -92,6 +92,15 @@ class Model extends MyPDO{
 		$sql.= join (',', $attribute_pairs);
 		$sql.= " WHERE $primary_key = '{$this->$primary_key}'";
 		return $this->connection->query($sql);
+
+	}
+
+	 public static function LastOne(){
+	 	$sql = " SELECT * FROM " .static::$table_name. " ORDER BY " .static::$primary_key." DESC LIMIT 3 ";
+	 	$obj = new static();
+	 	$objects = $obj->connection->query($sql)->fetchAll(PDO::FETCH_CLASS,static::$class_name);
+			
+	 	return ($objects) ? $objects : false;
 
 	}
  	

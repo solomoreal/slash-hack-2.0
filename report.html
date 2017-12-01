@@ -1,30 +1,4 @@
-<?php 
-    
-    include_once 'include/assault.php';
-    $msg = '';
-    if (isset($_POST['submitReport'])){
-    
-        $report = AssaultReport::instantiate($_POST);
-        // var_dump($reporter);
-          if($report){
-                if ($report->insertNewReport()){
-                   $msg = "<div class='alert alert-success alert-dismissable'>
-                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <h4 class='text-center'><strong>Report Sent Successfully.</strong></h4>
-                <p class='text-center'>Thank You For Confiding In Us, We will Keep In Touch With You Through the contact Information You provided In the Form.</p>
-                </div>";
-                }else {
-                  $msg = "<div class='alert alert-danger alert-dismissable'>
-                <a href='#' class = 'close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <h4 class='text-center'><strong>Oops.. Something went Wrong.</strong></h4>
-                <p class='text-center'>Please check your Inputs and try again.</p>
-                </div>";
-                }
-            
-    }
-   } 
-
-?>
+>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +19,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/gaia.css" rel="stylesheet"/>
     <link href="assets/css/fonts/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
 
 <body>
@@ -59,8 +34,8 @@
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
-                <a href="index.html" class="navbar-brand" id="sitename">
-                    SiteName
+                <a href="index.html" class="navbar-brand" style="font-size: 1em; font-family: 'Lobster', cursive;" id="Victorious">
+                    Victorious
                 </a>
             </div>
             <div class="collapse navbar-collapse">
@@ -73,8 +48,18 @@
                         <a href="report.html" id="menu" >Make A Report</a>
                     </li>
 
-                   <li>
-                        <a href="get_involved.php" id="menu">Get Involved</a>
+                   <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" id="menu">
+                         Get Involved
+                        </a>
+                        <ul class="dropdown-menu dropdown-danger">
+                            <li>
+                                <a href="get_involved.html"> Sign Up</a>
+                            </li>
+                            <li>
+                                <a href="partner_login.html"> Log In</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -83,10 +68,11 @@
     </nav>
 
 
+
     <div class="section section-header">
         <div class="parallax filter filter-color-black">
             <div class="image"
-                style="background-image: url('assets/img/report.jpg')">
+                style="background-image: url('assets/img/full-screen-image.jpg')">
             </div>
             <div class="container">
                 <div class="content">
@@ -119,13 +105,13 @@
     <div class="section section-our-team-freebie">
         <div class="parallax filter">
             <div class="image"
-                style="background-image: url('assets/img/grassland.jpg')">
+                style="background-image: url('assets/img/bokeh-1569531_1920.jpg')">
             </div>
             <div class="container">
                 <div class="title-area">
                     <h2 class="text-white">Report Form</h2>
                 </div>
-            <form action="report.php" method="post">
+            <form action="report.html" method="post">
                 <div class="col-md-offset-2 col-md-8 col-sm-4 col-md-offset-2" style="text-align: center;">
                     <h3>Reporter's Information (the reporter and survivor can be different People)</h3>
                     <div class="separator line-separator">♦</div>
