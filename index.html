@@ -34,7 +34,11 @@
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
+<<<<<<< HEAD:index.html
                 <a href="index.html" class="navbar-brand" style="font-size: 1em; font-family: 'Lobster', cursive;" id="Victorious">
+=======
+                <a href="index.php" class="navbar-brand active" style="font-size: 1em; font-family: 'Lobster', cursive;" id="Victorious">
+>>>>>>> 1fa20942e2ba17b3cd316ee4ce0c203139b10d10:index.php
                     Victorious
                 </a>
             </div>
@@ -54,10 +58,17 @@
                         </a>
                         <ul class="dropdown-menu dropdown-danger">
                             <li>
+<<<<<<< HEAD:index.html
                                 <a href="get_involved.html"> Sign Up</a>
                             </li>
                             <li>
                                 <a href="partner_login.html"> Log In</a>
+=======
+                                <a href="get_involved.php"> Sign Up</a>
+                            </li>
+                            <li>
+                                <a href="partner_login.php"> Log In</a>
+>>>>>>> 1fa20942e2ba17b3cd316ee4ce0c203139b10d10:index.php
                             </li>
                         </ul>
                     </li>
@@ -68,7 +79,7 @@
     </nav>
 
     <div class="section section-header">
-        <div class="parallax filter filter-color-black">
+        <div class="parallax filter filter-color-white">
             <div class="image"
                 style="background-image: url('assets/img/friends.jpg')">
             </div>
@@ -100,7 +111,7 @@
                     <h2>Our Aim</h2>
                     <div class="separator separator-danger">✻</div>
                     <p class="description">As we have seen from recent trends, Sexual Harassment and assault are far too common and often not reported, and it's hard for victims to know whether or not they're the only one. Knowing that you are not alone in this suitation changes a lot - the way you frame your experience, your motivation to take action, the chance that taking action will lead to protection of yourself and your community.
-                    It's time we all join the revolution against Sexual Harassment and assualt.[SiteName] helps by giving victims the options, information and support they need by allowing them to disclose in their own time and in their own way. We also partner with concerned Individuals and Organisations who want to lend a helping hand to these victims.
+                    It's time we all join the revolution against Sexual Harassment and assualt.[Victorious] helps by giving victims the options, information and support they need by allowing them to disclose in their own time and in their own way. We also partner with concerned Individuals and Organisations who want to lend a helping hand to these victims.
                     We believe that by empowering victims of sexual harassment and assualt, we can support their wellbeing and change the culture of sexual violence that has persisted for far too long.</p>
                 </div>
         </div>
@@ -140,7 +151,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <a href="report.html" class="solution">
+                                <a href="report.php" class="solution">
                                 <div class="icon text-danger">
                                     <i class="pe-7s-note2"></i>
                                 </div>
@@ -184,6 +195,7 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD:index.html
                     <div class="team">
                         <div class="row">
                             <div class="col-md-10 col-md-offset-1">
@@ -230,6 +242,44 @@
                                             </div>
                                         </div>
                                     </div>
+=======
+                
+                         <?php
+                         include_once 'include/testimony.php';
+                         $testimonies = Testimony::LastThree();
+                        $model ='';
+                                                
+                        if ($testimonies){        
+                        $model .="    <div class='team'>
+
+
+                  
+                        <div class='row'>
+                            <div class='col-md-10 col-md-offset-1'>
+                                <div class='row'>";
+                                  foreach ($testimonies as $testimony) {
+                                     # code...
+                                 $model.="  <div class='col-md-4'>
+                                                <div class='card card-member'>
+                                                    <div class='card content'> 
+                                                        <div class='avatar avatar-danger'>
+                                                            <img  class='img-rounded img-responsive' src='image/testimony/$testimony->passport'/>
+                                                        </div>    
+                                                    
+                                                        <div class='description'>
+                                                            <h3 class='title'>    $testimony->first_name;  </h3>
+                                                            <p class='small-text'>   $testimony->last_name; </p>
+                                                            <p class='description'>   $testimony->testimony</p>
+                                                            <div class='button-get-started'>
+                                                                <a href='testimonies.php' class='btn btn-danger btn-fill btn-md'>Read More</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>    
+                                                </div>
+                                            </div> ";
+                                    } 
+                                        $model .= "   
+>>>>>>> 1fa20942e2ba17b3cd316ee4ce0c203139b10d10:index.php
 
                                 </div>
                             </div>
@@ -238,7 +288,16 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD:index.html
     </div>
+=======
+    </div>";
+                                        echo  $model;
+                                    }    
+
+?>                                      
+                                      
+>>>>>>> 1fa20942e2ba17b3cd316ee4ce0c203139b10d10:index.php
    
     <div class="section section-our-team-freebie">
         <div class="parallax filter filter-color-black">
@@ -254,6 +313,7 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD:index.html
                     <div class="team">
                         <div class="row">
                             <div class="col-md-10 col-md-offset-1">
@@ -300,15 +360,61 @@
                                             </div>
                                         </div>
                                     </div>
+=======
+                     
+                              <?php
+                              include_once 'include/story.php';
+                              $stories = Story::LastThree();
+                             $model ='';
+                                                     
+                             if ($stories){        
+                             $model .="    <div class='team'>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+                       
+                             <div class='row'>
+                                 <div class='col-md-10 col-md-offset-1'>
+                                     <div class='row'>";
+                                       foreach ($stories as $story) {
+                                          # code...
+                                      $model.="  <div class='col-md-4'>
+                                                     <div class='card card-member'>
+                                                         <div class='card content'> 
+                                                             <div class='avatar avatar-danger'>
+                                                                 <img  class='img-rounded img-responsive' src='image/story/$story->passport'/>
+                                                             </div>    
+                                                         
+                                                             <div class='description'>
+                                                                 <h3 class='title'>    $story->first_name;  </h3>
+                                                                 <p class='small-text'>   $story->last_name; </p>
+                                                                 <p class='description'>   $story->story</p>
+                                                                 <div class='button-get-started'>
+                                                                     <a href='testimonies.php' class='btn btn-danger btn-fill btn-md'>Read More</a>
+                                                                 </div>
+                                                             </div>
+                                                         </div>    
+                                                     </div>
+                                                 </div> ";
+                                         } 
+                                             $model .= "   
+
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>";
+                                             echo  $model;
+                                         }    
+
+     ?>                    
+
+
+
+>>>>>>> 1fa20942e2ba17b3cd316ee4ce0c203139b10d10:index.php
+
 
 
 

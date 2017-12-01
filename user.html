@@ -1,3 +1,15 @@
+<<<<<<< HEAD:user.html
+=======
+<?php
+    
+    include_once 'include/session.php';
+    include_once 'include/partner.php';
+    if(!($session->is_logged_in())) redirect('login.php');
+    $partner = Partner::find($session->user_id);
+
+
+?>
+>>>>>>> 1fa20942e2ba17b3cd316ee4ce0c203139b10d10:user.php
 
 
 <!doctype html>
@@ -43,7 +55,7 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="index.html" class="simple-text">
+                <a href="index.php" class="simple-text">
                     SiteName
                 </a>
             </div>
@@ -116,7 +128,11 @@
                               </ul>
                         </li>
                         <li>
+<<<<<<< HEAD:user.html
                             <a href="include/logout.html">
+=======
+                            <a href="include/logout.php">
+>>>>>>> 1fa20942e2ba17b3cd316ee4ce0c203139b10d10:user.php
                                 <p>Log out</p>
                             </a>
                         </li>
