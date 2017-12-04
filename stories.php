@@ -48,7 +48,7 @@ include_once 'include/story.php';
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
-                <a href="index.html" class="navbar-brand" id="sitename">
+                <a href="index.php" class="navbar-brand" id="sitename">
                     SiteName
                 </a>
             </div>
@@ -58,24 +58,21 @@ include_once 'include/story.php';
                         <a href="aboutus.html" target="_blank" id="menu" >About Us</a>
                     </li>
                     
-                    <li class="dropdown">
-                        <a href="report.html" class="dropdown-toggle" id="menu" data-toggle="dropdown">
-                            Make A Report
+                    <li>
+                        <a href="report.php" id="menu" >Make A Report</a>
+                    </li>
+                   <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" id="menu">
+                         Get Involved
                         </a>
                         <ul class="dropdown-menu dropdown-danger">
                             <li>
-                                <a href="#">Work Place Assualt</a>
+                                <a href="get_involved.php"> Sign Up</a>
                             </li>
                             <li>
-                                <a href="#">Domestic Assualt</a>
-                            </li>
-                            <li>
-                                <a href="#">Campus Assualt</a>
+                                <a href="partner_login.php"> Log In</a>
                             </li>
                         </ul>
-                    </li>
-                   <li>
-                        <a href="get_involved.php" id="menu">Get Involved</a>
                     </li>
                 </ul>
             </div>

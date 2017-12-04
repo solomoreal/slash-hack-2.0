@@ -60,7 +60,7 @@
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
-                <a href="index.html" class="navbar-brand" id="sitename">
+                <a href="index.php" class="navbar-brand" id="sitename">
                     SiteName
                 </a>
             </div>
@@ -71,11 +71,21 @@
                     </li>
                     
                     <li>
-                        <a href="report.html" id="menu" >Make A Report</a>
+                        <a href="report.php" id="menu" >Make A Report</a>
                     </li>
 
-                   <li>
-                        <a href="get_involved.php" id="menu">Get Involved</a>
+                   <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" id="menu">
+                         Get Involved
+                        </a>
+                        <ul class="dropdown-menu dropdown-danger">
+                            <li>
+                                <a href="get_involved.php"> Sign Up</a>
+                            </li>
+                            <li>
+                                <a href="partner_login.php"> Log In</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

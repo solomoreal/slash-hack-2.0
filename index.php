@@ -130,7 +130,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <a href="report.html" class="solution">
+                                <a href="report.php" class="solution">
                                 <div class="icon text-danger">
                                     <i class="pe-7s-note2"></i>
                                 </div>
@@ -159,63 +159,72 @@
         </div>
     </div>
 
-
-
-      "<div class='section section-our-clients-freebie'>
-            <div class='container'>
-                <div class= 'title-area'>
-                    <h5 class='subtitle text-gray'>Here are some</h5>
-                    <h2>Testimonials</h2>
-                    <div class='separator separator-danger'>∎</div>
-                </div>"
-
-                 <ul class='nav nav-text' role='tablist'>
-                            <li class='active'>
-                                <a href='#testimonial1' role='tab' data-toggle='tab'>
-                                    <div class='image-clients'>
-                                        <img alt='...'' class='img-circle' src='image/testimony/$testimony->passport'/>
-                                    </div>
-                                </a>
-                            </li>
-                             <li class='active'>
-                                <a href='#testimonial1' role='tab' data-toggle='tab'>
-                                    <div class='image-clients'>
-                                        <img alt='...'' class='img-circle' src='image/testimony/$testimony->passport'/>
-                                    </div>
-                                </a>
-                            </li>
-                         </ul>
-                          <li class='active'>
-                                <a href='#testimonial1' role='tab' data-toggle='tab'>
-                                    <div class='image-clients'>
-                                        <img alt='...'' class='img-circle' src='image/testimony/$testimony->passport'/>
-                                    </div>
-                                </a>
-                            </li>"
-                   
-                     <div class='tab-content'>
-                            <div class='tab-pane active' id='testimonial1'>
-                                <p class='description'>
-                                     $testimony->testimony;
-                                </p>
-
-                            </div>
-                            <div class='tab-pane' id='testimonial2'>
-                                <p class='description'>  $testimony->testimony;
-                                </p>
-                            </div>
-                            <div class='tab-pane' id='testimonial3'>
-                                <p class='description'>
-                                 $testimony->testimony;
-                                </p>
-                            </div>
-
+   
+    <div class="section section-our-team-freebie">
+        <div class="parallax filter filter-color-black">
+            <div class="image" style="background-image:url('assets/img/header-2.jpeg')">
+            </div>
+            <div class="container">
+                <div class="content">
+                    <div class="row">
+                        <div class="title-area">
+                            <h2 style="color: white;">Testimony Section</h2>
+                            <div class="separator separator-danger">✻</div>
+                            <p class="description">Look and see our testifiers  what they have to say, basically on the part of thier lives that has being changed based on the soluton type  given to them..</p>
                         </div>
+                    </div>
 
+                
+                         <?php
+                         include_once 'include/testimony.php';
+                         $testimonies = Testimony::LastThree();
+                        $model ='';
+                                                
+                        if ($testimonies){        
+                        $model .="    <div class='team'>
+
+
+                  
+                        <div class='row'>
+                            <div class='col-md-10 col-md-offset-1'>
+                                <div class='row'>";
+                                  foreach ($testimonies as $testimony) {
+                                     # code...
+                                 $model.="  <div class='col-md-4'>
+                                                <div class='card card-member'>
+                                                    <div class='card content'> 
+                                                        <div class='avatar avatar-danger'>
+                                                            <img  class='img-rounded img-responsive' src='image/testimony/$testimony->passport'/>
+                                                        </div>    
+                                                    
+                                                        <div class='description'>
+                                                            <h3 class='title'>    $testimony->first_name;  </h3>
+                                                            <p class='small-text'>   $testimony->last_name; </p>
+                                                            <p class='description'>   $testimony->testimony</p>
+                                                            <div class='button-get-started'>
+                                                                <a href='testimonies.php' class='btn btn-danger btn-fill btn-md'>Read More</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>    
+                                                </div>
+                                            </div> ";
+                                    } 
+                                        $model .= "   
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>";
+                                        echo  $model;
+                                    }    
 
-
+?>                                      
+                                      
+   
     <div class="section section-our-team-freebie">
         <div class="parallax filter filter-color-black">
             <div class="image" style="background-image:url('assets/img/header-2.jpeg')">
@@ -230,70 +239,59 @@
                         </div>
                     </div>
 
-                    <div class="team">
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="card card-member">
-                                            <div class="content">
-                                                <div class="avatar avatar-danger">
-                                                    <img alt="..." class="img-circle" src="assets/img/faces/face_1.jpg"/>
-                                                </div>
-                                                <div class="description">
-                                                    <h3 class="title">Tina</h3>
-                                                    <p class="small-text">CEO / Co-Founder</p>
-                                                    <p class="description">I miss the old Kanye I gotta say at that time I’d like to meet Kanye And I promise the power is in the people and I will use the power given by the people to bring everything I have back to the people.</p>
-                                                    <div class="button-get-started">
-                                                        <a href="#" class="btn btn-danger btn-fill btn-md">Read Story</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="card card-member">
-                                            <div class="content">
-                                                <div class="avatar avatar-danger">
-                                                    <img alt="..." class="img-circle" src="assets/img/faces/face_4.jpg"/>
-                                                </div>
-                                                <div class="description">
-                                                    <h3 class="title">Andrew</h3>
-                                                    <p class="small-text">Product Designer</p>
-                                                    <p class="description">I miss the old Kanye I gotta say at that time I’d like to meet Kanye And I promise the power is in the people and I will use the power given by the people to bring everything I have back to the people.</p>
-                                                    <div class="button-get-started">
-                                                        <a href="#" class="btn btn-danger btn-fill btn-md">Read Story</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="card card-member">
-                                            <div class="content">
-                                                <div class="avatar avatar-danger">
-                                                    <img alt="..." class="img-circle" src="assets/img/faces/face_3.jpg"/>
-                                                </div>
-                                                <div class="description">
-                                                    <h3 class="title">Michelle</h3>
-                                                    <p class="small-text">Marketing Hacker</p>
-                                                    <p class="description">I miss the old Kanye I gotta say at that time I’d like to meet Kanye And I promise the power is in the people and I will use the power given by the people to bring everything I have back to the people.</p>
-                                                    <div class="button-get-started">
-                                                        <a href="#" class="btn btn-danger btn-fill btn-md">Read Story</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                     
+                              <?php
+                              include_once 'include/story.php';
+                              $stories = Story::LastThree();
+                             $model ='';
+                                                     
+                             if ($stories){        
+                             $model .="    <div class='team'>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+                       
+                             <div class='row'>
+                                 <div class='col-md-10 col-md-offset-1'>
+                                     <div class='row'>";
+                                       foreach ($stories as $story) {
+                                          # code...
+                                      $model.="  <div class='col-md-4'>
+                                                     <div class='card card-member'>
+                                                         <div class='card content'> 
+                                                             <div class='avatar avatar-danger'>
+                                                                 <img  class='img-rounded img-responsive' src='image/story/$story->passport'/>
+                                                             </div>    
+                                                         
+                                                             <div class='description'>
+                                                                 <h3 class='title'>    $story->first_name;  </h3>
+                                                                 <p class='small-text'>   $story->last_name; </p>
+                                                                 <p class='description'>   $story->story</p>
+                                                                 <div class='button-get-started'>
+                                                                     <a href='testimonies.php' class='btn btn-danger btn-fill btn-md'>Read More</a>
+                                                                 </div>
+                                                             </div>
+                                                         </div>    
+                                                     </div>
+                                                 </div> ";
+                                         } 
+                                             $model .= "   
+
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>";
+                                             echo  $model;
+                                         }    
+
+     ?>                    
+
+
+
+
 
 
     <div class="section section-our-clients-freebie">
