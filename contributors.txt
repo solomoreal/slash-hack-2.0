@@ -1,5 +1,0 @@
-The list of contributors includes
-1. Emmanuel  ikeogu -> github : https//github.com/ikeogu,email:ikeogu322@gmail.com .
-2. Moses Oggbopina -> github : https//github.com/pena56, email: ogbopinamoses@gmail.com.
-3. Onuche Solomon  -> github : https//github.com/solomoreal, email: solomoreal@yahoo.com
-4. Jacob okoro -> github : https://github.com/rheinchester
